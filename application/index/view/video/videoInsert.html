@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>md</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<div id="formdiv">
+	<form action="http://www.damowang.com/videoInDo" method="post" enctype="multipart/form-data">
+		视屏板块:<select class="bid" name="bid">
+					<option value="1">动漫</option>
+					<option value="2">电影</option>
+					<option value="3">电视剧</option>
+				</select><br />
+				<div class="dm">
+					视屏产地:<select name="vplace">
+								<option value="1">中国</option>
+								<option value="2">欧美</option>
+								<option value="3">日韩</option>
+							</select><br />
+					视频类别:<select name="cid">
+								<option value="1">正片</option>
+								<option value="2">剧场版</option>
+								<option value="3">其他</option>
+							</select><br />
+					视频风格:<select name="sid">
+								<option value="1">热血</option>
+								<option value="2">搞笑</option>
+								<option value="3">催泪</option>
+								<option value="3">恋爱</option>
+								<option value="3">奇幻</option>
+							</select><br />		
+					视频名称:<input type="text" name="videoname"><br />
+					视频介绍:<input type="text" name="videocountent"><br />
+					上传视频:<input type="file" name="vsrc"><br />
+					视屏图片:<input type="pic" name="vpic"><br />
+					是否免费:<input type="" name="vip">
+				</div>
+				<div class="dy" style="display:none">
+					视屏产地:<select name="vplace">
+								<option value="1">中国</option>
+								<option value="2">欧美</option>
+								<option value="3">日韩</option>
+							</select><br />
+					视频类别:<select name="cid">
+								<option value="1">正片</option>
+								<option value="2">剧场版</option>
+								<option value="3">其他</option>
+							</select><br />
+					视频风格:<select name="sid">
+								<option value="1">热血</option>
+								<option value="2">搞笑</option>
+								<option value="3">催泪</option>
+								<option value="3">恋爱</option>
+								<option value="3">奇幻</option>
+							</select><br />		
+					视频名称:<input type="text" name="videoname"><br />
+					视频介绍:<input type="text" name="videocountent"><br />
+					上传视频:<input type="file" name="vsrc"><br />
+					视屏图片:<input type="pic" name="vpic"><br />
+					是否免费:<input type="" name="vip">
+				</div>
+				<div class="dsj" style="display:none">
+					视屏产地:<select name="vplace">
+								<option value="1">中国</option>
+								<option value="2">欧美</option>
+								<option value="3">日韩</option>
+							</select><br />
+					视频类别:<select name="cid">
+								<option value="1">正片</option>
+								<option value="2">剧场版</option>
+								<option value="3">其他</option>
+							</select><br />
+					视频风格:<select name="sid">
+								<option value="1">热血</option>
+								<option value="2">搞笑</option>
+								<option value="3">催泪</option>
+								<option value="3">恋爱</option>
+								<option value="3">奇幻</option>
+							</select><br />		
+					视频名称:<input type="text" name="videoname"><br />
+					视频介绍:<input type="text" name="videocountent"><br />
+					上传视频:<input type="file" name="vsrc"><br />
+					视屏图片:<input type="pic" name="vpic"><br />
+					是否免费:<input type="" name="vip">
+				</div>
+		
+		<input type="submit" name="">
+	</form>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var bank = document.getElementById('formdiv');
+	var oDiv = bank.getElementsByTagName('div');
+	alert(oDiv[0].innerHTML);
+</script>

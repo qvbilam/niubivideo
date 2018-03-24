@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--ie使用edge渲染模式-->
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+	<meta name="renderer" content="webkit"><!--360渲染模式-->
+	<meta name="format-detection" content="telephone=notelphone=no, email=no" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<meta name="apple-touch-fullscreen" content="yes"/><!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/><!-- 设置苹果工具栏颜色:默认值为 default，可以定为 black和 black-translucent-->
+	<meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 不让百度转码 -->
+	<meta name="HandheldFriendly" content="true"><!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+	<meta name="MobileOptimized" content="320"><!-- 微软的老式浏览器 -->
+	<meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+	<meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+	<meta name="browsermode" content="application"><!-- UC应用模式 -->
+	<meta name="x5-page-mode" content="app"><!-- QQ应用模式 -->
+	<meta name="msapplication-tap-highlight" content="no"><!-- windows phone 点击无高光 -->
+	<link rel="stylesheet" href="__INDEX__lunbotu.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="__INDEX__css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="__INDEX__css/common.css" rel="stylesheet" type="text/css" />
+	<script src="__INDEX__js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="__INDEX__js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+	<script src="__INDEX__js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="__INDEX__js/common.js" type="text/javascript"></script>
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="__INDEX__images/favicon.png">
+	<link rel="apple-touch-icon" href="__INDEX__imagesimh/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="__INDEX__images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="__INDEX__images/apple-touch-icon-114x114.png">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="__INDEX__css/fonts/font-awesome.css">
+	<link rel="stylesheet" href="__INDEX__css/main.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900%7CMontserrat:400,700%7CLora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	
+</head>
+<body>
+	<div>
+		<div id="header-top">
+
+			<div class="wrapper clearfix">
+				
+				<nav id="navigation">
+					<ul class="menu">
+						<li class="current-menu-item">
+							<a href="../index">首页</a>
+						</li>		
+					</ul><!-- .menu -->
+				</nav><!-- #navigation -->
+
+				<!--  <div id="navigation-hamburger">
+        
+          <span class="navigation-hamburger-hook"><span class="fa fa-reorder"></span></span>
+          <select>
+                    <option value="#">- Select -</option>
+            <option value="#">- Select -</option>
+            automatically populated based on #navigation
+          </select>
+        
+        </div>#navigation-hamburger
+         -->
+				<div id="header-search">
+					<div class="header-search-inner">
+						<form method="get" action="search.html">
+							<input type="text" name="s" placeholder="Search and hit enter" />
+						</form>
+						<span class="header-search-icon"><span class="fa fa-search"></span></span>
+					</div><!-- .search-form-wrapper -->
+				</div><!-- #header-search -->
+
+				<div id="header-social">
+          {if empty($user)}
+					<a href="../login" target="_blank" class="fa">登陆</a>
+					<a href="../register" target="_blank" class="fa">注册</a>
+          {else}
+          <a href=''>{$user}</a>
+          
+          <a href="info">个人中心</a>
+          {/if}
+				</div><!-- #header-social -->
+
+			</div><!-- .wrapper -->
+
+		</div>
+	</div>	
+	<div class="lunbo-silder">
+       <div class="silder-scroll">
+            <div class="silder-main">
+                <div class="silder-main-img">
+                    <img src="__INDEX__images/1-1.jpg" alt="">
+                </div>
+                <div class="silder-main-img">
+                    <img src="__INDEX__images/2-1.jpg" alt="">
+                </div>
+                <div class="silder-main-img">
+                    <img src="__INDEX__images/3-1.png" alt="">
+                </div>
+                 <div class="silder-main-img">
+                    <img src="__INDEX__images/3-1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="home_style  Channel">
+<!--栏目-->
+ <div class="home_Column_style">
+ <div class="Column_list clearfix navigation_list">
+  <ul class="">
+   <li class="Channel_name"><a href="index.tml" ><i class="icon_TV"></i>首页</a></li>
+   <li class="Channel_name1"><a href="list_page.html" ><i class="icon_TV"></i>娱乐</a></li>
+   <li class="Channel_name2"><a href="#" ><i class="icon_TV"></i>电视剧</a></li>
+   <li class="Channel_name3"><a href="#"><i class="icon_TV"></i>电影</a></li>
+   <!-- <li class="Channel_name4"><a href="#" ><i class="icon_TV"></i>网络电影</a></li>
+   <li class="Channel_name5"><a href="#" ><i class="icon_TV"></i>综艺</a></li>
+   <li class="Channel_name6"><a href="#" ><i class="icon_TV"></i>动漫</a></li>
+   <li class="Channel_name7"><a href="#" ><i class="icon_TV"></i>纪录片</a></li>
+   <li class="Channel_name8"><a href="#" ><i class="icon_TV"></i>公开课</a></li> -->
+  </ul>
+  </div>
+  <!--栏目-->
+ <!--  <div class="Column_list navigation">
+  <a href="#" class="w_logo"><img src="images/logo.png"  width="100%"/></a>
+   <div class="navigatio_name">
+     <a href="javascript:" class="mouse-enter"><i class="icon_navigatio"></i>导航</a>
+     <div class="navigatio_nav">
+     <ul class=" clearfix">
+   <li class="Channel_name"><a href="#" ><i class="icon_TV"></i>首页</a></li>
+   <li class="Channel_name1"><a href="#" ><i class="icon_TV"></i>娱乐</a></li>
+   <li class="Channel_name2"><a href="#" ><i class="icon_TV"></i>电视剧</a></li>
+   <li class="Channel_name3"><a href="#"><i class="icon_TV"></i>电影</a></li>
+   <li class="Channel_name4"><a href="#" ><i class="icon_TV"></i>网络电影</a></li>
+   <li class="Channel_name5"><a href="#" ><i class="icon_TV"></i>综艺</a></li>
+   <li class="Channel_name6"><a href="#" ><i class="icon_TV"></i>动漫</a></li>
+   <li class="Channel_name7"><a href="#" ><i class="icon_TV"></i>纪录片</a></li>
+   <li class="Channel_name5"><a href="#" ><i class="icon_TV"></i>公开课</a></li>
+   <li class="Channel_name8"><a href="#" ><i class="icon_TV"></i>公开课</a></li>
+   <li class="Channel_name3"><a href="#" ><i class="icon_TV"></i>公开课</a></li>
+  </ul>
+     </div>
+     
+   </div>
+   <div class="Video_search">
+     <input name="" type="text"  class="search"/><button name="" type="button" class=" btn-success button_submit"><i class="icon_search"></i>搜索</button>
+  </div>
+  </div> -->
+ </div>
+ <!--热播精选-->
+ <div class="Hot_selection_style Channels">
+   <div class="title_name clearfix"><i class="icon_title"><img src="images/icon_title_TV.png" /></i>热播精选 <span class="link_name"><a href="#">3月观影指南:炫酷大片不容错过</a>| <a href="#">致命诱惑!这些制服妹子好美</a>|</span></div>
+   <div class="Video_list margintb clearfix">
+    <div class="left_Video_list Channel_bg bg">
+     <span class="Signs_img"></span>
+     <a href="#" class="Video_img_link">
+      <img src="video/1.jpg" />
+      <span class="xianshi"><i class="icon_bofang"></i></span>
+     </a>
+     <div class="heading_name">
+      <A href="#">男子保护区内持枪狩猎 竟把民警当猎物射击</A>
+      <H4>民警及时隐蔽卧倒并未受伤</H4>
+     </div>
+    </div>
+    <div class="right_Video_list">
+     <ul class="list_v_content">
+      <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/3.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >现场</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+     </ul>
+    </div>   
+   </div>
+   <!--电视剧-->
+   <div class="Channels margintb">
+    <div class="title_name clearfix">
+    <i class="icon_title"><img src="images/icon_title_TV.png" /></i>电视剧 <span class="link_name"><a href="#">偶像言情</a>| <a href="#">古装</a>| <a href="#">更多</a></span></div>
+    <div class="clearfix mb40"> 
+     <div class="var_list_fort">
+     <ul class="video_list list_v_content">
+     <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/4.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >43集</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+    
+     
+      
+      
+     
+    
+     </ul>
+     </div>
+     <!--右-->
+     <div class="Launch_style bg" id="picMarquee-top">
+       <div class="label_title"><span class="name">即将上线</span></div>
+       <div class="bd">
+       <ul class="Launch_list">
+        <li class="video_name">
+        <div class="clearfix">
+        <a href="#" class="link_name"><img src="video/5.jpg"/></a>
+        <span class="Introduction">
+        <a href="#" title="愿有人陪你颠沛流离" class="p_title_name">愿有人陪你颠沛流离</a>
+        <p class="set_number">集数：23集</p>
+        </span></div><p class="time">上线时间：2017-03-30</p></li>
+       </div>
+     </div>
+     <script>jQuery("#picMarquee-top").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});</script>
+    </div>
+     <!--预告-->
+       <div class="Notice_style">
+        <div class="Notice_title"><span class="name">电视剧预告</span></div>
+        <div class="clearfix list_v_content">
+          <ul class="Notice_list">
+            <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/14.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >更新预告</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+       
+     
+      
+          </ul>
+        </div>
+       </div>
+   </div>
+      <!--综艺-->
+   <div class="Channels margintb">
+    <div class="title_name clearfix">
+    <i class="icon_title"><img src="images/icon_title_TV.png" /></i>综艺娱乐 <span class="link_name"><a href="#">偶像言情</a>| <a href="#">古装</a>| <a href="#">更多</a></span></div>
+    <div class="clearfix mb40"> 
+     <div class="var_list_fort">
+     <ul class="video_list list_v_content">
+     <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/16.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >2017年34期</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+     </ul>
+     </div>
+     <!--右-->
+     <div class="Launch_style bg" id="picMarquee-top1">
+       <div class="label_title"><span class="name">即将上线</span></div>
+       <div class="bd">
+       <ul class="Launch_list">
+        <li class="video_name">
+        <div class="clearfix">
+        <a href="#" class="link_name"><img src="video/5.jpg"/></a>
+        <span class="Introduction">
+        <a href="#" title="愿有人陪你颠沛流离" class="p_title_name">愿有人陪你颠沛流离</a>
+        <p class="set_number">集数：23集</p>
+        </span></div><p class="time">上线时间：2017-03-30</p></li>
+       </ul>
+       </div>
+     </div>
+     <script>jQuery("#picMarquee-top1").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});</script>
+    </div>
+     <!--预告-->
+       <div class="Notice_style">
+        <div class="Notice_title"><span class="name">电视剧预告</span></div>
+        <div class="clearfix list_v_content">
+          <ul class="Notice_list">
+            <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/14.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >更新预告</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+     
+       
+          </ul>
+        </div>
+       </div>
+   </div>
+   <!--电影-->
+   <div class="Channels margintb">
+    <div class="title_name clearfix">
+    <i class="icon_title"><img src="images/icon_film.png" /></i>电影<span class="link_name"><a href="#">偶像言情</a>| <a href="#">古装</a>| <a href="#">科幻</a> | <a href="#">搞笑</a>|<a href="#">更多</a></span></div>
+    <div class="clearfix  "> 
+    <ul class="movie_list  clearfix">
+     <li class="Case_info">
+     <a href="#" class="movie_link">
+     <img src="video/6.jpg"  width="100%"/>
+     <div class="movie_title">
+      <i class="fraction">6.5</i>
+      <p class="name">天空之眼</p>
+      <h5>众多奥斯卡大咖加盟</h5>
+      <p class="content">
+        凯瑟琳上校（海伦·米伦饰）率英国情报单位追捕一名女性恐怖分子长达六年，经由美军加入高空监视行动，好不…
+      </p>
+     </div>
+     </a>
+     </li>
+         
+               <li class="Case_info">
+     <a href="#" class="movie_link">
+     <img src="video/10.jpg"  width="100%"/>
+     <div class="movie_title">
+      <i class="fraction">6.5</i>
+      <p class="name">天空之眼</p>
+      <h5>众多奥斯卡大咖加盟</h5>
+      <p class="content">
+        凯瑟琳上校（海伦·米伦饰）率英国情报单位追捕一名女性恐怖分子长达六年，经由美军加入高空监视行动，好不…
+      </p>
+     </div>
+     </a>
+     </li>
+             
+    </ul> 
+       <!--预告-->
+       <div class="Notice_style">
+        <div class="Notice_title"><span class="name">电影预告</span></div>
+        <div class="clearfix list_v_content">
+          <ul class="Notice_list">
+            <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/14.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >更新预告</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+       
+          </ul>
+        </div>
+       </div>
+    </div>
+    </div>
+          <!--动漫-->
+   <div class="Channels margintb">
+    <div class="title_name clearfix">
+    <i class="icon_title"><img src="images/icon_title_TV.png" /></i>动漫 <span class="link_name"><a href="#">欧美</a>| <a href="#">古装</a>| <a href="#">更多</a></span></div>
+    <div class="clearfix mb40"> 
+     <div class="var_list_fort">
+     <ul class="video_list list_v_content">
+     <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/19.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >2017年34期</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+     
+     </ul>
+     </div>
+     <!--右-->
+     <div class="Launch_style bg" id="picMarquee-top2">
+       <div class="label_title"><span class="name">即将上线</span></div>
+       <div class="bd">
+       <ul class="Launch_list">
+        <li class="video_name">
+        <div class="clearfix">
+        <a href="#" class="link_name"><img src="video/5.jpg"/></a>
+        <span class="Introduction">
+        <a href="#" title="愿有人陪你颠沛流离" class="p_title_name">愿有人陪你颠沛流离</a>
+        <p class="set_number">集数：23集</p>
+        </span></div><p class="time">上线时间：2017-03-30</p></li>
+        
+       </ul>
+       </div>
+     </div>
+     <script>jQuery("#picMarquee-top2").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});</script>
+    </div>
+     <!--预告-->
+       <div class="Notice_style">
+        <div class="Notice_title"><span class="name">电视剧预告</span></div>
+        <div class="clearfix list_v_content">
+          <ul class="Notice_list">
+            <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/14.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >更新预告</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+        </ul>
+        </div>
+       </div>
+   </div>
+   <!--其他-->
+    <div class="Channels margintb">
+    <div class="title_name clearfix">
+    <i class="icon_title"><img src="images/icon_title_TV.png" /></i>其他 <span class="link_name"><a href="#">欧美</a>| <a href="#">古装</a>| <a href="#">更多</a></span></div>
+     <div class="clearfix list_v_content">
+          <ul class="Notice_list">
+            <li class="first_content bg">
+       <a href="#" class="pic " target="_blank">
+        <img src="video/14.jpg"  width="100%"/>
+        <span class="first_bg"><i class="icon_bf"></i></span>
+       </a>
+       <a target="_blank" href="#" class="bq" >更新预告</a>
+       <div class="tc">
+        <p class="tit">
+        <a target="_blank" href="#" >轿车公路上行驶被闪电劈中</a></p>
+        <p class="des">巨响过后冒出浓烟</p>
+       </div>
+      </li>
+        </ul>
+        </div>      
+    </div>
+    <!---->
+    <div class="l_f width50">
+     <div class="bg mr10">
+      <div class="n_title_name"><em class=""></em>网站公告</div>
+      <ul class="notice_list clearfix">
+       <li><a href="#"><i class="icon_yuan"></i>通知公告内容是什么的内容的介绍信息</a> </li>
+       <li><a href="#"><i class="icon_yuan"></i>通知公告内容是什么的内容的介绍信息</a> </li>
+       <li><a href="#"><i class="icon_yuan"></i>通知公告内容是什么的内容的介绍信息</a> </li>
+       <li><a href="#"><i class="icon_yuan"></i>通知公告内容是什么的内容的介绍信息</a> </li>
+       <li><a href="#"><i class="icon_yuan"></i>通知公告内容是什么的内容的介绍信息</a> </li>
+      </ul>
+     </div>
+    </div>
+    <div class="l_f width50">
+     <div class="bg ml10">     
+     <div class="n_title_name">合作伙伴</div>
+     <div class="notice_list clearfix">
+      <a href="#" class="Cooperation_name">华数</a>
+      <a href="#" class="Cooperation_name">万达电影网</a>
+      <a href="#" class="Cooperation_name">华谊兄弟</a>
+      <a href="#" class="Cooperation_name">星美</a>
+      <a href="#" class="Cooperation_name">光线影业</a>
+      <a href="#" class="Cooperation_name">电影网</a>
+      <a href="#" class="Cooperation_name">华策影视</a>
+      <a href="#" class="Cooperation_name">百度视频</a>
+      <a href="#" class="Cooperation_name">百度百科</a>
+      <a href="#" class="Cooperation_name">微博视频台</a>
+      <a href="#" class="Cooperation_name">百度贴吧</a>
+      <a href="#" class="Cooperation_name">央广网</a>
+      <a href="#" class="Cooperation_name">hao123</a>
+      <a href="#" class="Cooperation_name">爱奇艺</a>
+      <a href="#" class="Cooperation_name">天猫店</a>
+     </div>
+     </div>
+    </div>
+ </div>
+</div>
+<!--底部样式-->
+<div class="footer_style">
+<div class="footer">
+ <div class="copys copys-list clearfix">
+   <a href="#">网络文化经营许可证 京网文[2014]xxxxx-236号</a>
+   <a href="#">京卫网审[2013]第0209号 网络110报警服务</a>
+   <a href="#">药品服务许可证(京)-经营2222-0029</a>
+  <a href="#">节目制作经营许可证京字670号</a>
+ </div>
+<div class="link_name">
+<a href="#">关于我们</a>|<a href="#">媒体合作</a>|<a href="#">开放平台</a>|<a href="#">广告服务</a>|<a href="#">联系我们</a>|<a href="#">工作机会</a>|<a href="#">友情链接</a></div>
+<div class="Copyright">Copyright © 2004-2017 视频名称（xx.com）All rights reserved.</div>
+<div class="align clearfix">
+ <a href="#"><img src="images/ghs.png" />京公网安备：xxxxxxxxxxxxxxxx号</a> &nbsp;&nbsp;&nbsp;
+ <a href="#"><img src="images/xy.png" />中国互联网诚信联盟</a>
+</div>
+</div>
+
+</div>
+<!-- 代码 开始 -->
+<div class="go-top dn" id="go-top">
+    
+    <a href="zhuce.html" target="_blank" class="feedback"></a>
+    <a href="javascript:;" class="go"></a>
+</div>
+
+<script>
+/*********搜索*********/
+function submit_btn(){
+	 $(".search_style input[type$='text']").each(function(n){
+		  if($(this).val()=="")
+          {
+               
+					 layer.open({
+		title: [
+		  '我是标题',
+		  'background-color:#8DCE16; color:#fff;'
+		]
+		,anim: 'up'
+		,content: '展现的是全部结构'
+		,btn: ['确认', '取消']
+	  }); 
+            return false;            
+          } 
+		 else{
+			 location.href="search_page.html";
+			 
+			 }
+		 })		
+}
+
+</script>
+
+
+
+    <script src="__INDEX__jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="__INDEX__wySilder.min.js" type="text/javascript"></script>
+
+    <script>
+    	$(function (){
+    		$(".lunbo-silder").silder({
+                auto: true,//自动播放，传入任何可以转化为true的值都会自动轮播
+                speed: 20,//轮播图运动速度
+                sideCtrl: true,//是否需要侧边控制按钮
+                bottomCtrl: true,//是否需要底部控制按钮
+                defaultView: 0,//默认显示的索引
+                interval: 1000,//自动轮播的时间，以毫秒为单位，默认3000毫秒
+                activeClass: "active",//小的控制按钮激活的样式，不包括作用两边，默认active
+            });
+    	});
+    </script>
+</body>
+</html>
