@@ -54,6 +54,9 @@ class Info extends Controller
 		//生日日期转换为时间戳
 		$str = $res['nian'] . '-' . $res['yue']. '-' . $res['day'];
 		$str = strtotime($str);
+		//修改昵称
+		$data = $res['username'];
+		$username = $this->user->where('uid',$res['uid'])->update(['username'=>$data]);
 		//建立数组，输入到数据库
 		$arr['birthday'] = $str;
 		$arr['sex'] = $res['sex'];

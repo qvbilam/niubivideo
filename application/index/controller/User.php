@@ -2,6 +2,8 @@
 namespace app\index\controller;
 use think\Controller;
 use app\index\model\User as UserModel;
+use sanfangdenglu\Open;
+use think\Db;
 
 class User extends Controller
 {
@@ -41,10 +43,24 @@ class User extends Controller
 
 	//注册执行页
 	public function doregister()
-	{
-		$this->user->doregister(input());
+	{	
+		$data = input();
+		$res = $this->user->doregister($data);
+		return $res;
 	}
 
+	//判断用户名是否存在
+	public function username()
+	{
+
+		$res = Db::name('user')->where('user',input('get.user'))->value('uid');
+
+		if (empty($res)) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 	//找回密码
 	public function forgot()
 	{
@@ -55,5 +71,29 @@ class User extends Controller
 	public function _empty()
 	{
 		$this->redirect('/');
+	}
+
+
+	//第三方登陆
+	public function disan ()
+	{
+		$open = new Open();
+		$code = $_GET['code'];
+		$data =$open->me($code);
+		$res = $this->user->where('user',$data['uniq'])->value('user');
+		if (!empty($res)) {
+			session('name',$res);	
+			$this->success('登陆成功','/');
+			echo 1;	
+		} else {
+			echo 2;
+			$this->user->disan($data);
+		}
+		if ($res == 1) {
+			$this->session('登陆成功','/');
+		} else {
+			$this->error('登陆失败','login');
+		}
+		
 	}
 }

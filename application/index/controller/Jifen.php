@@ -2,14 +2,11 @@
 namespace app\index\controller;
 use think\Controller;
 use app\index\model\Feed;
-use think\Db;	
+use app\index\model\Integralinfo;
+use think\Db;
 
 class Jifen extends Controller
 {
-	public function _initialize()
-	{
-		
-	}
 	//积分
 	public function points()
 	{
@@ -22,6 +19,17 @@ class Jifen extends Controller
 		$this->assign('res',$res);
 		return $this->fetch();
 	}
+
+	//每日签到
+	public function qiandao()
+	{
+		//$res = input('get.uid');
+		$res = 1;
+		$integralinfo = new Integralinfo();
+		$str = $integralinfo->meiri($res);
+		return  $str;
+	}
+
 
 	//收藏
 	public function collection()
@@ -63,6 +71,12 @@ class Jifen extends Controller
 	public function _empty()
 	{
 		$this->redirect('/');
+	}
+
+	//VIp信息
+	public function coupon()
+	{
+
 	}
 
 }

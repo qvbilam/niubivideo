@@ -1,6 +1,7 @@
 <?php
 
 namespace app\index\model;
+use app\index\model\Userinfo;
 use think\Model;
 use think\Db;
 use duanxin\Ucpaas;
@@ -22,7 +23,7 @@ class User extends Model
 		} else if ($res['islog'] != 0 ) {
 			return "用户被限制登录";
 		}
-		session('user',$data['user']);
+		session('name',$data['user']);
 		return 0;		
 	}
 
@@ -59,13 +60,21 @@ class User extends Model
 	//注册页
 	public function doregister($data)
 	{
-		
+		if ($data['yzm'] != session($data['phone'])) {
+			return 3;
+		}
 		$array = [];
 		$array['regtime'] = time();
 		$array['password'] = md5($data['password']);
 		$array['user'] = $data['user'];
-		$res = Db::table('user')
+		$res = Db::name('user')
 				->insert($array);
+		if ($res == 1) {
+			session('name',$array['user']);
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	//user 与 userInfo 关联
@@ -73,11 +82,10 @@ class User extends Model
 	{
 		return $this->hasOne('Userinfo','uid');
 	}
-	//user 查信息
+
+	//user 查询个人信息
 	public function geren()
 	{	
-		session('name','admin');
-		
 		$res = $this->where('user',session('name'))->find();
 		$res1 =$res->toarray();
 		$res2 = $res->userinfo->toarray();
@@ -112,4 +120,24 @@ class User extends Model
 		return $res;
 	}
 
+	//第三方登陆
+	public function disan($data)
+	{
+		$arr = [];
+		//插入到user表中
+		$arr['user'] = $data['uniq'];
+		$arr['username'] = $data['name'];
+		$arr['source'] = $data['from'];
+		$arr['regtime'] = time();
+		$res = $this->save($arr);
+		$uid = $this->uid;
+		//插入到userinfo表中
+		$info = [];
+		$info['sex'] = $data['sex'];
+		$info['userpic'] = $data['img'];
+		$info['uid'] = $uid;
+		$userinfo = new Userinfo();
+		$str = $userinfo->save($info);
+		return $res;
+	}
 }

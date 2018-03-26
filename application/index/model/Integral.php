@@ -1,18 +1,20 @@
 <?php
 
 namespace app\idnex\model;
-use thinl\Model;
+use think\Model;
 
 class Integral extends Model
 {
+	//一对一关联
 	public function Integralinfo ()
 	{
 		return $this->hasOne('Integralinfo','uid');
 	}
 
+	//查询积分
 	public function selejifen()
 	{
 		$res =  $this->where('uid',session('uid'))->select();
-		$data = $this->Integralinfo->select();
+		$data =$res->select();
 	}
 }
