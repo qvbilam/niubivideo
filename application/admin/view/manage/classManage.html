@@ -1,0 +1,356 @@
+﻿<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="favicon.ico" >
+<link rel="Shortcut Icon" href="favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__ADMIN__static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__static/h-ui.admin/css/style.css" />
+<!-- Tree -->
+<link rel="stylesheet" type="text/css" href="__TREES__css/guoone.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script><![endif]-->
+<!--/meta 作为公共模版分离出去-->
+
+<title>大魔王影院</title>
+<link rel="stylesheet" href="__ADMIN__lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+</head>
+<body>
+<!--_header 作为公共模版分离出去-->
+<header class="navbar-wrapper">
+	<div class="navbar navbar-fixed-top">
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> <span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.0</span> <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+			<nav class="nav navbar-nav">
+				<ul class="cl">
+					<li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
+						<ul class="dropDown-menu menu radius box-shadow">
+							<li><a href="javascript:;" onclick="article_add('添加资讯','article-add.html')"><i class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
+							<li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.html')"><i class="Hui-iconfont">&#xe613;</i> 图片</a></li>
+							<li><a href="javascript:;" onclick="product_add('添加资讯','product-add.html')"><i class="Hui-iconfont">&#xe620;</i> 产品</a></li>
+							<li><a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')"><i class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+				<ul class="cl">
+					<li>超级管理员</li>
+					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+						<ul class="dropDown-menu menu radius box-shadow">
+							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+							<li><a href="#">切换账户</a></li>
+							<li><a href="#">退出</a></li>
+						</ul>
+					</li>
+					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
+					<li id="Hui-skin" class="dropDown right dropDown_hover"> <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
+						<ul class="dropDown-menu menu radius box-shadow">
+							<li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
+							<li><a href="javascript:;" data-val="blue" title="蓝色">蓝色</a></li>
+							<li><a href="javascript:;" data-val="green" title="绿色">绿色</a></li>
+							<li><a href="javascript:;" data-val="red" title="红色">红色</a></li>
+							<li><a href="javascript:;" data-val="yellow" title="黄色">黄色</a></li>
+							<li><a href="javascript:;" data-val="orange" title="橙色">橙色</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+<!--/_header 作为公共模版分离出去-->
+
+<!--_menu 作为公共模版分离出去-->
+<aside class="Hui-aside">
+	
+	<div class="menu_dropdown bk_2">
+		<dl id="menu-product">
+			<dt class="selected"><i class="Hui-iconfont">&#xe620;</i> 资源管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd style="display: block;">
+				<ul>
+					<li><a href="tovideomanage" title="品牌管理">视频管理</a></li>
+					<li class="current"><a href="classManage" title="分类管理">分类管理</a></li>
+					<li><a href="classBig" title="分类管理">高级分类</a></li>
+					<li><a href="videoManage" title="产品管理">高级管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a href="../post/post" title="评论列表">评论列表</a></li>
+					<li><a href="../post/back" title="意见反馈">回复列表</a></li>
+					<li><a href="../post/danmu" title="意见反馈">弹幕列表</a></li>
+					<li><a href="../post/recycle" title="意见反馈">回收站</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
+</aside>
+<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+<!--/_menu 作为公共模版分离出去-->
+
+
+
+
+<section class="Hui-article-box">
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 资源管理 <span class="c-gray en">&gt;</span> 分类管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	<div class="Hui-article">
+		<article class="cl pd-20">
+			<table class="table">
+				<tr>
+					<td id="treeadd" width="200" class="va-t">
+						<ul id="files">
+							{volist name='vbank' id='bank'}
+							<li><a href="javascript:void(0);" class="bank" value='bid = {$bank.id}'>{$bank.bankname}</a>
+								<ul>
+									{volist name='vclass' id='class'}
+									{eq name='$class.bid' value='$bank.id'}
+									<li><a href="javascript:void(0);" class="class" value='cid = {$class.id}'>{$class.classname}</a>
+										<ul>
+											{volist name='vstyle' id='style'}
+											{eq name='$style.cid' value='$class.id'}
+											<li><a href="javascript:void(0);" class="style" value='sid = {$style.id}'>{$style.stylename}</a></li>
+											{/eq}
+											{/volist}
+										</ul>
+									</li>
+									{/eq}
+									{/volist}
+								</ul>
+							</li>
+							{/volist}
+						</ul>
+					</td>
+					<td class="va-t">
+						<input class="btn btn-primary-outline radius" id="bank" type="button" value="添加板块">
+						<input class="btn btn-secondary-outline radius" id="class" type="button" value="添加类别">
+						<input class="btn btn-success-outline radius" id="style" type="button" value="添加风格">
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<!--============================ 板块添加 ============================-->
+					<td id="bankadd" class="alltd" style="display: block;">
+						<form>
+						<input type="text" placeholder="大尺寸" class="input-text radius size-L" required style="margin-top: 2%">
+						<input class="btn btn-success-outline radius submit" type="button" value="提交" style="margin-top: 2%;">
+						<input class="btn btn-warning-outline radius" type="reset" value="重置" style="margin-top:2%">
+						</form>
+					</td>
+					<!--============================ 类别添加 ============================-->
+					<td id="classadd" class="alltd" style="display: none">
+						<form>
+						<select class="select" size="1" style="height: 41px; border-radius: 5px;" name="demo1">
+						    <option value="0" selected>请选择板块</option>
+						    {volist name='vbank' id='bank'}
+						    <option value="{$bank.id}">{$bank.bankname}</option>
+						    {/volist}
+						</select>
+						<input type="text" placeholder="大尺寸" class="input-text radius size-L" style="margin-top: 2%">
+						<input class="btn btn-success-outline radius submit" type="button" value="提交" style="margin-top: 2%;">
+						<input class="btn btn-warning-outline radius" type="reset" value="重置" style="margin-top:2%">
+						</form>
+					</td>
+					<!--============================ 风格添加 ============================-->
+					<td id="styleadd" class="alltd" style="display: none">
+						<form>
+						<select class="bankselect" size="1" style="height: 41px; border-radius: 5px;" name="demo1">
+						    <option value="" selected>请选择板块</option>
+						    {volist name='vbank' id='bank'}
+						    <option value="{$bank.id}">{$bank.bankname}</option>
+						    {/volist}
+						</select>
+						<select class="classselect" size="1" style="height: 41px;border-radius: 5px;margin-top: 2%" name="demo1">
+						    <option value="" selected>请先选择板块</option>
+						</select>
+						<input type="text" placeholder="大尺寸" class="input-text radius size-L" style="margin-top: 2%">
+						<input class="btn btn-success-outline radius submit" type="button" value="提交" style="margin-top: 2%;">
+						<input class="btn btn-warning-outline radius" type="reset" value="重置" style="margin-top:2%">
+						</form>
+					</td>
+				</tr>
+			</table>
+		</article>
+	</div>
+</section>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/zTree/v3/js/jquery.ztree.all-3.5.min.js"></script>
+
+<script type="text/javascript" src="__TREES__js/jquery.tree.js"></script>	
+<script type="text/javascript">
+/******************** Tree ***************************/
+$(function(){
+	$('#files').tree({
+		expanded: 'li:first'
+	});
+});
+/******************** Bank ***************************/
+$('#bank').click(function(){
+	$('.alltd').css('display','none');
+	$('#bankadd').css('display','block');	
+});
+$('#bankadd .submit').click(function(){
+		name = $('#bankadd input').val();
+		if($("#bankadd input").val().length<2){
+			alert('名字长度不能小于2');
+			return false;
+		}
+		$.ajax({
+		url:'http://www.damowang.com/admin/Manageajax/banksel',
+		type:'post',
+		data:'name='+name,
+		success:success
+		});
+		function success(data)
+		{
+			name = $('#bankadd input').val();
+			if(data == 'true'){
+				$.ajax({
+					url:'http://www.damowang.com/admin/Manageajax/bankins',
+					type:'post',
+					data:'name='+name,
+					success:success,
+				});
+				function success(data)
+				{
+					alert('添加成功');
+					$('#bankadd input[type="text"]').val('');
+				}
+			}else{
+				alert('名字重复');
+				$('#bankadd input[type="text"]').val('');
+			}
+		}
+	})
+/******************** Class ***************************/
+$('#class').click(function(){
+	$('.alltd').css('display','none');
+	$('#classadd').css('display','block');	
+});
+$('#classadd .submit').click(function(){
+	id = $('#classadd option:selected').attr('value');
+	if(id == 0){alert('选择板块名称啊');return false;}
+	name = $('#classadd input').val();
+	if($('#classadd input').val().length<2){alert('名字长度不能小于2');return false;}
+	cdata = {'id':id,'name':name}; 
+	$.ajax({
+		url:'http://www.damowang.com/admin/Manageajax/classsel',
+		type:'post',
+		data:cdata,
+		success:success
+	});
+	function success(data)
+	{
+		if(data == 'true'){
+			id = $('#classadd option:selected').attr('value');
+			name = $('#classadd input').val();
+			cdata = {'id':id,'name':name};
+			$.ajax({
+				url:'http://www.damowang.com/admin/Manageajax/classins',
+				type:'post',
+				data:cdata,
+				success:success,
+			});
+			function success(data)
+			{
+				alert('添加成功');
+				$('#classadd input[type="text"]').val('');
+			}
+		}else{
+			alert('名字重复');
+			$('#classadd input[type="text"]').val('');
+		}
+	}
+	
+});
+/******************** Style ***************************/
+$('#style').click(function(){
+	$('.alltd').css('display','none');
+	$('#styleadd').css('display','block');	
+});
+$('.bankselect').change(function(){
+	bid = $('.bankselect option:selected').val();
+	$.ajax({
+		url:'http://www.damowang.com/admin/Manageajax/bankchange',
+		type:'post',
+		data:'id='+bid,
+		success:changebid,
+	});
+	function changebid($data)
+	{
+		$('.classselect').html('<option value="0" selected>请选择类别</option>');
+		var data = JSON.parse($data);
+		for(var i=0;i<data.length;i++){
+			$('.classselect').append("<option value='"+data[i].id+"'>"+data[i].classname+"</option>");
+		}
+	}
+});
+$('#styleadd .submit').click(function(){
+			name = $('#styleadd input').val();
+			bid = $('#styleadd .bankselect option:selected').val();
+			cid = $('#styleadd .classselect option:selected').val();
+			data = {'name':name,'bid':bid,'cid':'cid'};
+			if($('#styleadd .bankselect option:selected').val() == 0){
+				alert('请选择板块');return false;
+			}
+			if($('#styleadd .classselect option:selected').val() == 0){
+				alert('请选择类别');return false;
+			}
+			if($('#styleadd input').val().length<2){
+				alert('名字长度不能小于2');return false;
+			}
+			$.ajax({
+				url:'http://www.damowang.com/admin/Manageajax/stylesel',
+				data:data,
+				type:'post',
+				success:success
+			});
+			function success($data)
+			{
+				if($data == 'true'){
+					alert('名字重复');
+				}else{
+					name = $('#styleadd input').val();
+					bid = $('#styleadd .bankselect option:selected').val();
+					cid = $('#styleadd .classselect option:selected').val();
+					data = {'name':name,'bid':bid,'cid':cid};					$.ajax({
+						url:'http://www.damowang.com/admin/Manageajax/styleins',
+						data:data,
+						type:'post',
+						success:success,
+					});
+					function success(data)
+					{
+						alert(data);
+					}
+				}
+			}
+});
+</script>
+</body>
+</html>

@@ -4,7 +4,6 @@ namespace app\admin\model;
 use think\Model;
 use think\Db;
 use traits\model\SoftDelete;
-use think\Validate;
 
 class User extends Model
 {
@@ -42,26 +41,11 @@ class User extends Model
 		$set = Db::name('user')->where('uid',$id)->delete();
 		return $set;
 	}
-
-	//判断登陆
-	public function dologin($data)
+	//post
+	public function userName()
 	{
-		
-		$validate = new Validate([
-			'captcha|验证码'=>'require|captcha'
-		]);
-		$res = [
-			'captcha' => $data['yzm']
-		];
-		if(!$validate->check($res)) {
-		return  '验证码输入有误';
-		} 
-		$res = $this->where('user',$data['user'])->find();
-		if (empty($res)) {
-			return '用户名不存在';
-		} else if ($res['password'] != md5($data['password'])) {
-			return '密码不正确';
-		} 
-		return '1';
-	}	
+		return Db::name('user')->select();
+	}
+
+	
 }

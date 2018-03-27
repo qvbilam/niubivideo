@@ -1,0 +1,21 @@
+<ul id="files">
+							{volist name='vbank' id='bank'}
+							<li><a href="javascript:void(0);" class="bank" value='bid = {$bank.id}'>{$bank.bankname}</a>
+								<ul>
+									{volist name='vclass' id='class'}
+									{eq name='$class.bid' value='$bank.id'}
+									<li><a href="javascript:void(0);" class="class" value='cid = {$class.id}'>{$class.classname}</a>
+										<ul>
+											{volist name='vstyle' id='style'}
+											{eq name='$style.cid' value='$class.id'}
+											<li><a href="javascript:void(0);" class="style" value='sid = {$style.id}'>{$style.stylename}</a></li>
+											{/eq}
+											{/volist}
+										</ul>
+									</li>
+									{/eq}
+									{/volist}
+								</ul>
+							</li>
+							{/volist}
+						</ul>

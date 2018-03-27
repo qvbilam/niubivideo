@@ -14,7 +14,7 @@ return [
     // | 应用设置
     // +----------------------------------------------------------------------
 
-    // 应用调试模式   
+    // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
     'app_trace'              => true,
@@ -142,8 +142,10 @@ return [
     'view_replace_str'       => [
         '__INDEX__' => 'http://www.damowang.com/static/index/',
         '__ADMIN__' => 'http://www.damowang.com/static/admin/',
-        '__BOOTS__' => 'http://www.damowang.com/static/bootstrp/',
-        '__HTTP__' => 'http://www.damowang.com/',
+        '__BOOTS__' => 'http://www.damowang.com/static/bootstrap/',
+        '__TREES__' => 'http://www.damowang.com/static/tree/',
+        '__DANMU__' => 'static/danmu/', 
+        '__PINGFEN__' => 'static/pingfen/', 
     ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -240,21 +242,5 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
-    ],
-    'captcha' => [
-        // 验证码字符集合
-        'codeSet' => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY',
-        // 验证码字体大小(px)
-        'fontSize' => 20,
-        // 是否画混淆曲线
-        'useCurve' => true,
-        // 验证码图片高度
-        'imageH' => 50,
-        // 验证码图片宽度
-        'imageW' => 200,
-        // 验证码位数
-        'length' => 4,
-        // 验证成功后是否重置
-        'reset' => true
     ],
 ];

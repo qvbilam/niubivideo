@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="__INDEX__css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="__INDEX__css/common.css" rel="stylesheet" type="text/css" />
+<script src="__INDEX__js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="__INDEX__js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script src="__INDEX__js/bootstrap.min.js" type="text/javascript"></script>
+<script src="__INDEX__js/common.js" type="text/javascript"></script>
+<script src="__INDEX__js/layer/layer.js" type="text/javascript"></script>
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="../__INDEX__img/favicon.png">
+<link rel="apple-touch-icon" href="../__INDEX__img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../__INDEX__img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../__INDEX__img/apple-touch-icon-114x114.png">
+
+  <!-- CSS -->
+<link rel="stylesheet" href="../__INDEX__css/fonts/font-awesome.css">
+<link rel="stylesheet" href="../__INDEX__css/main.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900%7CMontserrat:400,700%7CLora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<title>搜索结果-</title>
+</head>
+
+<body>
+  <div>
+    <div id="header-top">
+
+      <div class="wrapper clearfix">
+        
+        <nav id="navigation">
+          <ul class="menu">
+            <li class="current-menu-item">
+              <a href="/">首页</a>
+            </li> 
+            {volist name='vbank' id='bank'}  
+            <li><a href="../list/{$bank.id}">{$bank.bankname}</a></li>
+            {/volist}
+          </ul><!-- .menu -->
+        </nav><!-- #navigation -->
+
+        <div id="navigation-hamburger">
+
+          <span class="navigation-hamburger-hook"><span class="fa fa-reorder"></span></span>
+          <select>
+            <option value="#">- Select -</option>
+            <!-- automatically populated based on #navigation -->
+          </select>
+
+        </div><!-- #navigation-hamburger -->
+        
+        <div id="header-search">
+          <div class="header-search-inner">
+            <form method="post" action="../search">
+              <input type="text" name="search" placeholder="Search and hit enter" />
+            </form>
+            <span class="header-search-icon"><span class="fa fa-search"></span></span>
+          </div><!-- .search-form-wrapper -->
+        </div><!-- #header-search -->
+
+        <div id="header-social">
+
+          <a href="login" target="_blank" class="fa">登陆</a>
+          <a href="register" target="_blank" class="fa">注册</a>
+
+        </div><!-- #header-social -->
+
+      </div><!-- .wrapper -->
+
+    </div>
+  </div>  
+<div id="header_top" style="margin-top: 50px;">
+<!--搜索样式-->
+<div class="page_style clearfix"> 
+<div class="clearfix">
+ <div class="search_results_style">
+   <div class="results_name">共查询出<b>0</b>条记录</div>
+  
+   <div class="result_list clearfix">
+
+    {volist name='vto' id='video'}
+    <div class="result_content clearfix">
+    <div class="v_result_img"><a href="../detail/{$video.id}" class="link_img"><img src="{$video.vpic}" /></a></div>
+    <div class="v_label_content">
+      <dl class="relative clearfix">
+      <div class="score_style">评分：
+        <b>
+          {volist name='mark' id='vmark'}
+          {eq name='$vmark.tid' value='$video.id'}
+          {$vmark.ave}
+          {/eq}
+          {/volist}
+        </b>分
+      </div>
+      <br>
+      <dt><a href="../detail/{$video.id}"></a>{$video.vname}
+        <span>[
+          {volist name='vbank' id='bank'}
+          {eq name='$bank.id' value='$video.bid'}
+          {$bank.bankname}
+          {/eq}
+          {/volist}
+        ]</span> 
+        <span class="v_shul">
+
+          {volist name='num' id='vnum'}
+          {eq name='$vnum.tid' value='$video.id'}
+          {$vnum.count}
+          {/eq}
+          {/volist}
+          集
+        </span>
+      </dt>     
+      <dd class="width150"><label>地区：</label> 
+      <span><a href="#">
+        {eq name='video.vplace' value='1'}中国{/eq}
+        {eq name='video.vplace' value='2'}欧美{/eq}
+        {eq name='video.vplace' value='3'}日韩{/eq}
+      </a></span> 
+      </dd>
+      <dd ><label>类型：</label> <span><a href="#">
+        {volist name='vstyle' id='style'}
+          {eq name='$style.id' value='$video.bid'}
+          {$style.stylename}
+          {/eq}
+          {/volist}
+      </a></span> </dd>
+      <dd class="width150"><label>状态：</label> <span><a>{eq name='$video.vend' value='1'}完结{else}更新中{/eq}</a></span> 
+      </dd>
+      </dl>
+      <div class="video_into" style="height: 47px;">{$video.vcountent}</div>
+      <div class=""><a href="../detail/{$video.id}" class="btn_Play">立即观看 </a></div>
+    </div>
+    </div>
+    {/volist}
+    
+             
+     
+   </div>
+ </div>
+ {volist name='vfirst' id='first'}
+ <div class="program_style">
+ <div class="program_title"><span>热播剧场</span></div>
+   <ul class="movielist">
+   <li class="movie_theme">
+     <i class="icon_b rb_ico"></i>
+    <a href="../videoplay/{$first.id}" class="movie_img">
+     <img src="{$first.vpic}" >
+     <span class="v_title">
+      <em>第{$first.videonum}集</em>
+     </span>
+    </a>
+    <div class="movie_title">
+      <p class="movie_name"><a href="../videoplay/{$first.id}" class="name">{$first.videoname}</a><span class="status">热播</span></p>
+      <p class="Description" style="height: 18px;overflow : hidden;text-overflow: ellipsis;">{$first.videocountent}</p>
+     </div>
+    </li>
+   </ul>
+ </div>
+ {/volist}
+ </div>
+</div>
+<!--底部样式-->
+<div class="footer_style">
+<div class="footer">
+ <div class="copys copys-list clearfix">
+   <a href="">网络文化经营许可证 京网文[2014]xxxxx-236号</a>
+   <a href="#">京卫网审[2013]第0209号 网络110报警服务</a>
+   <a href="#">药品服务许可证(京)-经营2222-0029</a>
+  <a href="#">节目制作经营许可证京字670号</a>
+ </div>
+<div class="link_name">
+<a href="#">关于我们</a>|<a href="#">媒体合作</a>|<a href="#">开放平台</a>|<a href="#">广告服务</a>|<a href="#">联系我们</a>|<a href="#">工作机会</a>|<a href="#">友情链接</a></div>
+<div class="Copyright">Copyright © 2004-2017 视频名称（xx.com）All rights reserved.</div>
+<div class="align clearfix">
+ <a href="#"><img src="images/ghs.png" />京公网安备：xxxxxxxxxxxxxxxx号</a> &nbsp;&nbsp;&nbsp;
+ <a href="#"><img src="images/xy.png" />中国互联网诚信联盟</a>
+</div>
+</div>
+
+</div>
+<!-- 代码 开始 -->
+<div class="go-top dn" id="go-top">
+    
+    <a href="zhuce.html" target="_blank" class="feedback"></a>
+    <a href="javascript:;" class="go"></a>
+</div>
+</body>
+</html>
+<script>
+/*********搜索*********/
+function submit_btn(){
+	 $(".search_style input[type$='text']").each(function(n){
+		  if($(this).val()=="")
+          {               
+			   layer.alert("搜索框不能为空！",{
+                title: '提示框',				
+				icon:0,								
+          }); 		    
+            return false;            
+          } 
+		 else{
+			 location.href="search_page.html";
+			 
+			 }
+		 })		
+}
+/*********数据数量*********/
+num = $('.result_content').size();
+$('.results_name b').text(num);
+</script>

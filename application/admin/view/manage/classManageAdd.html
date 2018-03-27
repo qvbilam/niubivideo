@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link href="__ADMIN__static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__static/h-ui.admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<!-- <link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" /> -->
+<link href="__ADMIN__lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script><![endif]-->
+<title>添加产品分类</title>
+</head>
+<body>
+<div class="pd-20">
+  <button type="button" id="add" class="btn btn-primary">添加</button>
+  <button type="button" id="update" class="btn btn-warning">修改</button>
+  <button type="button" id="huifu" class="btn btn-success">恢复</button>
+  <button type="button" id="delete" class="btn btn-danger">删除</button><br>
+    板块名称：<select class="bank">
+      <option value="0">未选择</option>
+      {volist name='bank' id='vbank'}
+      <option value="{$vbank.id}">{$vbank.bankname}</option>
+      {/volist}
+    </select><br>
+    新建名称：<input type="text" class="form-control" id='addname'>
+    <font color="red">不选择板块则创建板块，不选择类则创建类.都选择创建风格</font><br>
+    <button type="button" id="submit" class="btn btn-primary">提交</button>
+
+</div>
+<!--_footer 作为公共模版分离出去--> 
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__static/h-ui.admin/js/H-ui.admin.page.js"></script> 
+<!--/_footer /作为公共模版分离出去--> 
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="__ADMIN__lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/jquery.validation/1.14.0/messages_zh.js"></script> 
+<script type="text/javascript">
+$('.bank').change(function(){
+  //alert($('.bank').selected().val());
+    $.ajax({
+      url:'http://www.damowang.com/admin/Videoajax/videoajax',
+      type:'post',
+      success:success,
+    });
+  
+  function success($data)
+  {
+    var data = JSON.parse($data);
+    $('#class').remove();
+    $('.bank').after("<select id='class'><option value='0'>未选择</option></select>");
+    for(var i=0;i<data.class.length;i++){
+      if(data.class[i].bid == $('.bank').selected().val())
+      {
+        $('#class').append("<option value='"+data.class[i].id+"'>"+data.class[i].classname+"</option>");
+      }  
+    }
+  }
+});
+$('#submit').click(function(){
+  var data = new Array();
+  data['bid'] = $('.bank option:selected').val();
+  data['cid'] = $('#class option:selected').val();
+  data['name'] = $('#addname').val();
+  /*bid = $('.bank option:selected').val();
+  cid = $('#class option:selected').val();
+  name= $('#addname').val();
+  "{'bid':bid,'cid':cid,'name':name}"*/
+ // console.log(data);
+  $.ajax({
+      url:'http://www.damowang.com/admin/Videoajax/nameAdd',
+      type:'post',
+      data:{'data':data},
+      success:nameAdd,
+    });
+});
+function nameAdd($data)
+{
+  console.log($data);
+}
+</script>
+</body>
+</html>

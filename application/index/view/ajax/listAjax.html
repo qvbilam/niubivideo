@@ -1,0 +1,46 @@
+ 
+
+
+
+
+
+
+  {volist name='video' id='videoval'}
+    <li class="movie_theme">
+        {eq name='$videoval.vend' value='1'}
+        <i class="icon_b rb_ico"></i>
+        {else}
+        <i class="icon_b yg_ico"></i>
+        {/eq}
+    <a href="../detail/{$videoval.id}" class="movie_img">
+    <img src="{$videoval.vpic}"  width="183px;"/>
+     <span class="v_title">
+      <em>
+        {eq name='$videoval.vend' value='1'}
+        全
+        {else}
+        更新至
+        {/eq}
+        <font color="red">
+        {volist name='num' id='numval'}
+        {eq name='$numval.tid' value='$videoval.id'}
+        {$numval.count}
+        {/eq}
+        {/volist}</font>&ensp;集
+      </em>
+      <!-- 评分 -->
+      <i class="fraction">
+      {volist name='mark' id='markval'}
+      {eq name='$markval.tid' value='$videoval.id'}
+      {$markval.ave}分
+      {/eq}  
+      {/volist}
+      </i>
+     </span>
+    </a>
+    <div class="movie_title">
+      <p class="movie_name"><a href="#" class="name">{$videoval.vname}</a><span class="status">热播</span></p>
+      <p class="Description">{$videoval.vcountent|mb_substr=0,12,'utf-8'}...</p>
+     </div>
+    </li>
+    {/volist}

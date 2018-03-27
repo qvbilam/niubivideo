@@ -1,0 +1,21 @@
+{volist name='mo' id='more'}
+        <li class="Case_info" style="overflow:hidden">
+          <a href="detail/{$more.id}" class="movie_link">
+          <img src="{$more.vpic}"  width="100%"/>
+          <div class="movie_title">
+          {volist name='mark' id="markval"}
+          {eq name="$markval.tid" value="$more.id"}
+          <i class="fraction">
+          {$markval.ave|round=1}
+          </i>
+          {/eq}
+          {/volist}
+          <p class="name"><font size="1px;">{$more.vname}</font></p>
+          <h5>{$more.vcountent|mb_substr=0,10,'utf-8'}</h5>
+          <p class="content">
+            {$more.vcountent|mb_substr=10,70,'utf-8'}
+          </p>
+          </div>
+          </a>
+        </li> 
+        {/volist}   

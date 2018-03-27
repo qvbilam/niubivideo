@@ -1,0 +1,117 @@
+					<table  class="table table-border table-bordered table-bg table-hover table-sort banktable">
+						<thead>
+							<tr class="text-c">
+								<th width="180">板块名称</th>
+								<th>封面</th>
+								<th width="100px">封面修改</th>
+								<th>状态</th>
+								<th width="100">操作</th>
+							</tr>
+						</thead>
+						{volist name='vbank' id='bank'}
+						<tbody>
+							<tr class="text-c va-m">
+								<td>{$bank.bankname}</td>
+								<td><img src="{$bank.bankpic}" width="80px;"></td>
+								<td>
+									<input type="file" name="">
+								</td>
+								<td class="td-status">
+									{eq name='$bank.display' value='1'}
+									<span class="label label-success radius">上线</span>
+									{else}
+									<span class="label label-error radius">下线</span>
+									{/eq}
+								</td>
+								<td class="td-manage">
+									<a style="text-decoration:none" onclick="hbank({$bank.id},this)">恢复</a>
+									<a style="text-decoration:none" onclick="dbank({$bank.id},this)">删除</a>
+								</td>
+							</tr>
+						</tbody>
+						{/volist}
+					</table>
+
+
+					<table  class="table table-border table-bordered table-bg table-hover table-sort classtable">
+						<thead>
+							<tr class="text-c">
+								<th width="180">类别名称</th>
+								<th>所属板块</th>
+								<th>状态</th>
+								<th width="100">操作</th>
+							</tr>
+						</thead>
+						{volist name='vclass' id='class'}
+						
+						<tbody>
+							<tr class="text-c va-m">
+								<td>{$class.classname}</td>
+								<td>
+									{volist name='vbank' id='bank'}
+									{eq name='$bank.id' value='$class.bid'}
+									{$bank.bankname}
+									{/eq}
+									{/volist}
+								</td>
+								<td class="td-status">
+									{eq name='$class.display' value='1'}
+									<span class="label label-success radius">上线</span>
+									{else}
+									<span class="label label-error radius">下线</span>
+									{/eq}
+								</td>
+								<td class="td-manage">
+									<a style="text-decoration:none" onclick="hclass({$class.id},this)">恢复</a>
+									<a style="text-decoration:none" onclick="dclass({$class.id},this)">删除</a>
+								</td>
+							</tr>
+							
+						</tbody>
+						{/volist}
+					</table>
+
+
+					<table  class="table table-border table-bordered table-bg table-hover table-sort styletable">
+						<thead>
+							<tr class="text-c">
+								<th width="180">风格名称</th>
+								<th>所属板块</th>
+								<th>所属类别</th>
+								<th>状态</th>
+								<th width="100">操作</th>
+							</tr>
+						</thead>
+						{volist name='vstyle' id='style'}
+						<tbody>
+							<tr class="text-c va-m">
+								<td>{$style.stylename}</td>
+								<td>
+									{volist name='vbank' id='bank'}
+									{eq name='$bank.id' value='$style.bid'}
+									{$bank.bankname}
+									{/eq}
+									{/volist}
+								</td>
+								<td>
+									{volist name='vclass' id='class'}
+									{eq name='$class.id' value='$style.bid'}
+									{$class.classname}
+									{/eq}
+									{/volist}
+								</td>
+								<td class="td-status">
+									{eq name='$style.display' value='1'}
+									<span class="label label-success radius">上线</span>
+									{else}
+									<span class="label label-error radius">下线</span>
+									{/eq}
+								</td>
+								<td class="td-manage">
+									<a style="text-decoration:none" onclick="hstyle({$style.id},this)">恢复</a>
+									<a style="text-decoration:none" onclick="dstyle({$style.id},this)">删除</a>
+								</td>
+							</tr>
+						</tbody>
+						{/volist}
+					</table>

@@ -1,0 +1,43 @@
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+						<thead>
+							<tr class="text-c">
+								<th width="40"><input name="" type="checkbox" value=""></th>
+								<th width="180">视频名称</th>
+								<th width="90">视频状态</th>
+								<th>封面</th>
+								<th>状态</th>
+								<th width="100">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							{volist name='tov' id='tovideo'}
+							<tr class="text-c va-m">
+								<td><input name="" type="checkbox" value="{$tovideo.id}"></td>
+								<td>{$tovideo.vname}</td>
+								<td>
+								{eq name='$tovideo.vend' value='1'}
+								完结
+								{else}
+								未完结
+								{/eq}
+								</td>
+								<td><img src="{$tovideo.vpic}" width="80px;"></td>
+								<td class="td-status">
+								{eq name='$tovideo.display' value='1'}
+									<span class="label label-success radius">上线</span>
+								{else}
+									<span class="label label-error radius">下线</span>
+								{/eq}
+								</td>
+								<td class="td-manage">
+									<a style="text-decoration:none" onclick="huifuOne({$tovideo.id})">恢复</a> 
+									<a style="text-decoration:none" href="updateManage?id={$tovideo.id}">编辑</a> 
+									<a style="text-decoration:none" onclick="delOne({$tovideo.id})">删除</a>
+								</td>
+							</tr>
+							{/volist}
+
+						</tbody>
+
+					</table>
+				</div>

@@ -3,47 +3,284 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title></title>
-  <link href="__DANMU__css/scojs.css" rel="stylesheet">
-  <link href="__DANMU__css/colpick.css" rel="stylesheet">
-  <link href="__DANMU__css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="__DANMU__css/main.css">
-  <!--<link rel="stylesheet" href="../dist/css/danmuplayer.css">-->
+  <link href="/__DANMU__css/scojs.css" rel="stylesheet">
+  <link href="/__DANMU__css/colpick.css" rel="stylesheet">
+  <link href="/__DANMU__css/bootstrap.css" rel="stylesheet">
+  <link href="/__DANMU__css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="/__DANMU__css/main.css">
+  <link rel="stylesheet" href="/__INDEX__css/post.css">
+  <link media="screen" href="../__PINGFEN__grade.css" type="text/css" rel="stylesheet" /> 
+  <script src="../__PINGFEN__jquery-latest.pack.js" type="text/javascript"></script> 
+  <script src="../__PINGFEN__grade.js" type="text/javascript"></script> 
+  <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css"> 
+  <!-- CSS -->
+  <link rel="stylesheet" href="../__INDEX__css/fonts/font-awesome.css">
+  <link rel="stylesheet" href="../__INDEX__css/main.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900%7CMontserrat:400,700%7CLora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="__INDEX__img/favicon.png">
+  <link rel="apple-touch-icon" href="__INDEX__img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="__INDEX__img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="__INDEX__img/apple-touch-icon-114x114.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--ie使用edge渲染模式-->
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+  <meta name="renderer" content="webkit"><!--360渲染模式-->
+  <meta name="format-detection" content="telephone=notelphone=no, email=no" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="apple-touch-fullscreen" content="yes"/><!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/><!-- 设置苹果工具栏颜色:默认值为 default，可以定为 black和 black-translucent-->
+  <meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 不让百度转码 -->
+  <meta name="HandheldFriendly" content="true"><!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+  <meta name="MobileOptimized" content="320"><!-- 微软的老式浏览器 -->
+  <meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+  <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+  <meta name="browsermode" content="application"><!-- UC应用模式 -->
+  <meta name="x5-page-mode" content="app"><!-- QQ应用模式 -->
+  <meta name="msapplication-tap-highlight" content="no"><!-- windows phone 点击无高光 -->
+  <link rel="stylesheet" href="../__INDEX__lunbotu.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../__INDEX__css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <link href="../__INDEX__css/common.css" rel="stylesheet" type="text/css" />
+  <script src="../__INDEX__js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  <script src="../__INDEX__js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+  <script src="../__INDEX__js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../__INDEX__js/common.js" type="text/javascript"></script>
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div id="danmup" style="left: 50%;margin-left:-400px;top:100px">
+
+<div>
+  <div id="header-top">
+
+    <div class="wrapper clearfix">
+        
+      <nav id="navigation">
+        <ul class="menu">
+          <li class="current-menu-item">
+          <a href="../">首页</a>
+          </li>   
+            {volist name='vbank' id='bank'}  
+            <li><a href="../list/{$bank.id}">{$bank.bankname}</a></li>
+            {/volist}
+       </ul><!-- .menu -->
+      </nav><!-- #navigation -->
+
+      <div id="navigation-hamburger">
+
+        <span class="navigation-hamburger-hook"><span class="fa fa-reorder"></span></span>
+        <select>
+          <option value="#">- Select -</option>
+          <!-- automatically populated based on #navigation -->
+        </select>
+
+      </div><!-- #navigation-hamburger -->
+        
+      <div id="header-search">
+          <div class="header-search-inner">
+            <form method="post" action="../search">
+              <input type="text" name="search" placeholder="Search and hit enter" />
+            </form>
+            <span class="header-search-icon"><span class="fa fa-search"></span></span>
+          </div><!-- .search-form-wrapper -->
+        </div><!-- #header-search -->
+
+      <div id="header-social">
+
+        <a href="login" target="_blank" class="fa">登陆</a>
+        <a href="register" target="_blank" class="fa">注册</a>
+
+      </div><!-- #header-social -->
+
+    </div><!-- .wrapper -->
+
+  </div>
+</div>  
 
 
+
+<div style="background-color: black;padding-top: 50px">
+  <div id="danmup" style="margin: 0 auto;"></div>
+  <br>
+  <center>
+    上一集:
+      {volist name='prev' id='p'}
+      <a href="../videoplay/{$p.id}">
+      {if empty($p.videoname)}
+      没有了
+      {else}
+      {$p.videoname}第{$p.videonum}集
+      {/if}
+      </a>
+      {/volist}
+      &emsp;&emsp;&emsp;&emsp;
+    下一集:
+      {volist name='next' id='n'}
+      <a href="../videoplay/{$n.id}">
+      {if empty($n.videoname)}
+      没有了
+      {else}
+      {$n.videoname}第{$n.videonum}集
+      {/if}
+      </a>
+      {/volist}  
+  </center>
+  <br>
 </div>
-<div style="display: none">
-  <span class="glyphicon" aria-hidden="true">&#xe072</span>
-  <span class="glyphicon" aria-hidden="true">&#xe073</span>
-  <span class="glyphicon" aria-hidden="true">&#xe242</span>
-  <span class="glyphicon" aria-hidden="true">&#xe115</span>
-  <span class="glyphicon" aria-hidden="true">&#xe111</span>
-  <span class="glyphicon" aria-hidden="true">&#xe096</span>
-  <span class="glyphicon" aria-hidden="true">&#xe097</span>
-</div>
 
+
+<br>
+<div style="width:310px; height:46px;margin: 0 auto;">
+  <button type="button" class="btn btn-success btn-lg shoucang" style="float: left; " >收藏</button>
+  <button type="button" class="btn btn btn-info btn-lg fenxiang" style="float: left; margin-left: 2%; " >分享</button>
+  {eq name='$video.0.top' value='0'}
+  <button type="button" class="btn btn-warning btn-lg zhiding" style="float: left; margin-left: 2%; " >置顶</button>
+  {else}
+  <button type="button" class="btn btn-warning btn-lg quxiao" style="float: left; margin-left: 2%; " >取消</button>
+  {/eq}
+  <button type="button" class="btn btn-danger btn-lg shanchu" style="float: left; margin-left: 2%; " >删除</button>
+  <button type="button" class="btn btn-primary btn-lg toupiao" style="float: left; margin-top:1%" >请给郭毅小天使的视频投上一票吧</button>
+</div>
+<br>
+<div id="box" style="display: none; margin-top: 3%"> 
+  <h4>给天使评分</h4> 
+  <div class="content"> 
+    <div id="myPoint">
+      <span><big>5</big><small>.0</small></span> 
+      <div>
+        <img src="../__PINGFEN__/star5.gif" />
+        <em>(一般)</em>
+      </div>
+    </div> 
+    <div id="doPoint"> 
+      <p>请点击以下星级进行评分：郭毅的评分=(美貌+内容+才华)/3</p> 
+      <table cellspacing="0" cellpadding="0" border="0"> 
+          <tbody> 
+            <tr> 
+              <th>郭毅美貌：</th> 
+              <td><span class="star5" id="item1" v="5"><small>1</small><small>2</small><small>3</small><small>4</small><small>5</small><small>6</small><small>7</small><small>8</small><small>9</small><small>10</small></span></td> 
+              <td><strong>5</strong> <em>(一般)</em></td>
+            </tr> 
+            <tr> 
+              <th>视频内容：</th> 
+              <td><span class="star5" id="item2" v="5"><small>1</small><small>2</small><small>3</small><small>4</small><small>5</small><small>6</small><small>7</small><small>8</small><small>9</small><small>10</small></span></td> 
+              <td><strong>5</strong> <em>(一般)</em></td>
+            </tr> 
+            <tr> 
+              <th>郭毅才华：</th> 
+              <td><span class="star5" id="item3" v="5"><small>1</small><small>2</small><small>3</small><small>4</small><small>5</small><small>6</small><small>7</small><small>8</small><small>9</small><small>10</small></span></td> 
+              <td><strong>5</strong> <em>(一般)</em></td>
+            </tr>
+          </tbody>
+      </table>
+    </div> 
+    <form id="form1" name="form1"  method="post">
+      <input id="pointV1" type="hidden" value="5" name="pointV1" /> 
+      <input id="pointV2" type="hidden" value="5" name="pointV2" /> 
+      <input id="pointV3" type="hidden" value="5" name="pointV3" />
+      <input name="vid" id="vid" style="display: none">
+      <button type="submit" id="pingfen">提交</button> 
+    </form>
+  </div>
+</div>  
+
+
+<br>
+<div class="container">
+
+
+    <div class="commentbox">
+      <textarea style="border: 3px solid #5bc0de; border-radius: 8px;" cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+      <div class="btn btn-info pull-right" id="comment">评论</div>
+    </div>
+
+
+  {volist name='vpost' id="vpostval"}
+  <div class="comment-list">
+    <div class="comment-info">
+      <header><img src=""></header><!-- 评论头像 -->
+      <div class="comment-right" style="border: 3px solid #5bc0de; border-radius: 28px;">
+        <h3>评论名</h3>
+        <div class="comment-content-header">
+          <span>
+            {$vpostval.posttime}
+          </span><span></span>
+        </div>
+        <p class="content">{$vpostval.postcountent}</p>
+        <div class="comment-content-footer">
+          <div class="row">
+            <div class="col-md-10">
+              <span></span><span></span>
+            </div>
+            <div class="col-md-2"><span class="reply-btn">回复</span></div>
+            <input type="text" class="form-control" name="back" pid="{$vpostval.id}" style="width: 78%; float: left; display:none">
+            <button class="btn btn-danger pull-right quxiao" style=" display: none; margin-right: 5% ">取消</button>
+            <button class="btn btn-info pull-right fasong" style=" display: none; margin-right: 1%">发送</button>
+            
+          </div>
+        </div>
+        {volist name="vback" id="vbackval"}
+        {eq name='$vbackval.pid' value='$vpostval.id'}
+        <div class="reply-list">
+          <div class="reply">
+            <div>
+              <a href="javascript:void(0)">回复名</a>:<!-- 回复名 -->
+              <a href="javascript:void(0)">@评论名</a><!-- 回复名 -->
+              <span width='100px;' >{$vbackval.backcountent}</span></div>
+            <p><span>{$vbackval.backtime}</span>
+          </div>
+        </div>
+        {/eq}
+        {/volist}
+      </div>
+    </div>
+  </div>
+  {/volist}
+</div>
+{$page}
+
+<!--底部样式-->
+<div class="footer_style">
+<div class="footer">
+ <div class="copys copys-list clearfix">
+   <a href="#">网络文化经营许可证 京网文[2014]xxxxx-236号</a>
+   <a href="#">京卫网审[2013]第0209号 网络110报警服务</a>
+   <a href="#">药品服务许可证(京)-经营2222-0029</a>
+  <a href="#">节目制作经营许可证京字670号</a>
+ </div>
+<div class="link_name">
+<a href="#">关于我们</a>|<a href="#">媒体合作</a>|<a href="#">开放平台</a>|<a href="#">广告服务</a>|<a href="#">联系我们</a>|<a href="#">工作机会</a>|<a href="#">友情链接</a></div>
+<div class="Copyright">Copyright © 2004-2017 视频名称（xx.com）All rights reserved.</div>
+<div class="align clearfix">
+ <a href="#"><img src="images/ghs.png" />京公网安备：xxxxxxxxxxxxxxxx号</a> &nbsp;&nbsp;&nbsp;
+ <a href="#"><img src="images/xy.png" />中国互联网诚信联盟</a>
+</div>
+</div>
 
 </body>
-<script src="__DANMU__js/jquery-2.1.4.min.js"></script>
-<script src="__DANMU__js/jquery.shCircleLoader.js"></script>
-<script src="__DANMU__js/sco.tooltip.js"></script>
-<script src="__DANMU__js/colpick.js"></script>
-<script src="__DANMU__js/jquery.danmu.js"></script>
-<script src="__DANMU__js/main.js"></script>
-<!--<script src="../dist/js/danmuplayer.min.js"></script>-->
-<script>
+<script src="/__DANMU__js/jquery-2.1.4.min.js"></script>
+<script src="/__DANMU__js/jquery.shCircleLoader.js"></script>
+<script src="/__DANMU__js/sco.tooltip.js"></script>
+<script src="/__DANMU__js/colpick.js"></script>
+<script src="/__DANMU__js/jquery.danmu.js"></script>
+<script src="/__DANMU__js/main.js"></script>
+<script type="text/javascript">
+//获取ID
+var str = window.location.pathname;
+var index = str .lastIndexOf("\/");  
+vid  = str .substring(index + 1, str .length);
+$("#vid").val(vid);
+//弹幕
 $("#danmup").DanmuPlayer({
     src:"{$video.0.vsrc}",
-    height: "480px", //区域的高度
-    width: "800px", //区域的宽度
-    //urlToGetDanmu:"getData.php", //获取弹幕
-    urlToPostDanmu:"../adddanmu/1"
+    height: "480px", 
+    width: "800px", 
+    urlToPostDanmu:"../adddanmu/{$vid}"
   });
 $.ajax({
   'type':"get",
-  'url':'../getdanmu/1',
+  'url':'../getdanmu/{$vid}',
   'data': null,
   'async':true,
   'success':success,
@@ -51,13 +288,170 @@ $.ajax({
 //万岁！弹幕便利出来了
 function success(data)
 {
-  //console.log(data);
   var data = JSON.parse(data);
-  //console.log(data.length);
   for (var i=0; i<data.length; i++)
   {
     $("#danmup .danmu-div").danmu("addDanmu",{text:data[i]['text'] ,color:data[i]['color'],size:1,position:data[i]['position'],time:data[i]['time']});
   }
-} 
+}
+//发送评论
+$('#comment').click(function() {
+  if ($('#content').val() == '')
+  {
+    alert('您有病？空的发nm');
+    return false;
+  }
+  $.ajax({
+    'type':'post',
+    'url':'../postadd',
+    'data':{post:$('#content').val(),vid:vid},
+    'success':postadd,
+  });
+});
+//点击回复
+$('.reply-btn').click(function() {
+  $(this).parent().next().css('display','block');
+  $(this).parent().next().next().css('display','block');
+  $(this).parent().next().next().next().css('display','block');
+});
+//取消回复
+$('.quxiao').click(function() {
+  $(this).css('display','none');
+  $(this).prev().css('display','none');
+  $(this).prev().val('');
+  $(this).next().css('display','none');
+});
+//发送回复
+$('.fasong').click(function() {
+  data = {'val':$(this).prev().prev().val(),'pid':$(this).prev().prev().attr('pid'),'vid':vid};
+  $.ajax({
+    url:'http://www.damowang.com/backadd?vid='+vid,
+    type:'post',
+    data:data,
+    success:postadd,
+  });
+   $(this).css('display','none');
+  $(this).prev().css('display','none');
+  $(this).prev().prev().val('');
+  $(this).prev().prev().css('display','none');
+});
+//投票
+$('.toupiao').click(function() {
+    $('#box').show();
+});
+//投票发送
+$('#pingfen').click(function (){
+  $('#box').hide();
+  //console.log($('#form1').serializeArray());
+  data = $('#form1').serializeArray();
+  $.ajax({
+    url:'http://www.damowang.com/markadd?vid='+vid,
+    type:'post',
+    data:data,
+    success:pingfen,
+  });
+  return false;
+});
+function pingfen($data)
+{
+    console.log($data);
+}
+function postadd($data)//还是别读这一段了。很难受的一段
+{
+  console.log($data);
+  $('.comment-list').remove();
+  $('.container').append($data);
+  $('#content').val('');
+  //发送评论
+  $('#comment').click(function() {
+    if ($('#content').val() == '')
+    {
+      alert('您有病？空的发nm');
+      return false;
+    }
+    $.ajax({
+      'type':'post',
+      'url':'../postadd',
+      'data':{post:$('#content').val(),vid:vid},
+      'success':postadd,
+    });
+  });
+  //点击回复
+  $('.reply-btn').click(function() {
+    $(this).parent().next().css('display','block');
+    $(this).parent().next().next().css('display','block');
+    $(this).parent().next().next().next().css('display','block');
+  });
+  //取消回复
+  $('.quxiao').click(function() {
+    $(this).css('display','none');
+    $(this).prev().css('display','none');
+    $(this).prev().val('');
+    $(this).next().css('display','none');
+  });
+  //发送回复
+  $('.fasong').click(function() {
+    data = {'val':$(this).prev().prev().val(),'pid':$(this).prev().prev().attr('pid'),'vid':vid};
+    $.ajax({
+      url:'http://www.damowang.com/backadd?vid='+vid,
+      type:'post',
+      data:data,
+      success:postadd,
+    });
+     $(this).css('display','none');
+    $(this).prev().css('display','none');
+    $(this).prev().prev().val('');
+    $(this).prev().prev().css('display','none');
+  });
+}
+//收藏
+$('.shoucang').click(function(){
+  //  vid = 视频 id
+});
+//分享
+$('.fenxiang').click(function(){
+  //  vid = 视频 id
+});
+//置顶
+$('.zhiding').click(function(){
+  $.ajax({
+    url:'http://www.damowang.com/index/Videoajax/zhiding',
+    type:'post',
+    data:'id='+vid,
+    success:bAjax,
+  });
+});
+//取消置顶
+$('.quxiao').click(function(){
+  $.ajax({
+    url:'http://www.damowang.com/index/Videoajax/quxiao',
+    type:'post',
+    data:'id='+vid,
+    success:bAjax,
+  });
+});
+//删除
+$('.shanchu').click(function(){
+  $.ajax({
+    url:'http://www.damowang.com/index/Videoajax/shanchu',
+    type:'post',
+    data:'id='+vid,
+    success:delAjax,
+  });
+});
+//按钮成功返回
+function bAjax(data)
+{
+  alert(data);
+  location.reload();
+}
+function delAjax()
+{
+  window.location.replace("http://www.damowang.com");
+}
+//换视频
+$('.change_link').click(function(){
+  alert(vid);
+});
 </script>
 </html>

@@ -1,39 +1,89 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
+<style type="text/css">     
+html{     
+    overflow-x: hidden;    
+}     
+</style> 
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="__INDEX__css/bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="__INDEX__css/common.css" rel="stylesheet" type="text/css" />
-<script src="__INDEX__js/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="__INDEX__js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
-<script src="__INDEX__js/bootstrap.min.js" type="text/javascript"></script>
-<script src="__INDEX__js/common.js" type="text/javascript"></script>
-<title>列表页</title>
+<link href="../__INDEX__css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="../__INDEX__css/common.css" rel="stylesheet" type="text/css" />
+<script src="../__INDEX__js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../__INDEX__js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script src="../__INDEX__js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../__INDEX__js/common.js" type="text/javascript"></script>
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="../__INDEX__img/favicon.png">
+<link rel="apple-touch-icon" href="../__INDEX__img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../__INDEX__img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../__INDEX__img/apple-touch-icon-114x114.png">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../__INDEX__css/fonts/font-awesome.css">
+<link rel="stylesheet" href="../__INDEX__css/main.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900%7CMontserrat:400,700%7CLora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+<title>大魔王影院</title>
 </head>
 
-<body class="background_color ">
-<div id="header_top">
-<div class="page_header">
- <div class="header_style">
-  <div class="clearfix">
-    <a href="#" class="logo_style"><img src="images/logo.png"  width="150px"/></a>
-    <ul class="nav_list">
-     <li class="nav_link"><a href="#" class="Channel_name"><i class="i icon_home"></i>首页</a></li>
-     <li class="nav_link Channel_link">
-     <div class="Channel_nav_list">
-       
-     </div>
-     </li>
-    </ul>
-    <div class="search_style">
-      <input name="" type="text"  class="search"/><button name="" type="button" class="button_submit" onclick="submit_btn()"><i class="icon_search"></i>搜索</button>
-   </div>
-  </div>
- </div>
-</div>
+<body class="background_color" style="margin:0 !important;">
+
+<div>
+    <div id="header-top">
+
+      <div class="wrapper clearfix">
+        
+        <nav id="navigation">
+          <ul class="menu">
+            <li class="current-menu-item">
+              <a href="/">首页</a>
+            </li>   
+            {volist name='vbank' id='bank'}  
+            <li><a href="../list/{$bank.id}">{$bank.bankname}</a></li>
+            {/volist}
+          </ul><!-- .menu -->
+        </nav><!-- #navigation -->
+
+        <div id="navigation-hamburger">
+
+          <span class="navigation-hamburger-hook"><span class="fa fa-reorder"></span></span>
+          <select>
+            <option value="#">- Select -</option>
+            <!-- automatically populated based on #navigation -->
+          </select>
+
+        </div><!-- #navigation-hamburger -->
+        
+        <div id="header-search">
+          <div class="header-search-inner">
+            <form method="post" action="../search">
+              <input type="text" name="search" placeholder="Search and hit enter" />
+            </form>
+            <span class="header-search-icon"><span class="fa fa-search"></span></span>
+          </div><!-- .search-form-wrapper -->
+        </div><!-- #header-search -->
+
+        <div id="header-social">
+
+          <a href="login" target="_blank" class="fa">登陆</a>
+          <a href="register" target="_blank" class="fa">注册</a>
+
+        </div><!-- #header-social -->
+
+      </div><!-- .wrapper -->
+
+    </div>
+  </div>  
+
+
+<div id="header_top" style="margin-top: 48px;">
+
 <!--图片-->
-<div style=" background:url(images/bg_b1.png) center repeat; height:221px;"></div>
+<div style=" background:url({volist name='thisb' id='thisbn'}{$thisbn.bankpic}{/volist}) center repeat; height:221px;"></div>
 </div>
 <!---->
 <div class="page_style">
@@ -42,9 +92,9 @@
  <div class="home_Column_style">
  <div class="Column_list clearfix navigation_list">
   <ul class="">
-   <li class="Channel_name1"><a href="#"><i class="icon_TV"></i>动漫</a></li>
-   <li class="Channel_name2"><a href="#"><i class="icon_TV"></i>电影</a></li>
-   <li class="Channel_name3"><a href="#"><i class="icon_TV"></i>电视剧</a></li>
+    {volist name='vbank' id='vbankval'}
+   <li class="Channel_name{$vbankval.id}"><a href="../list/{$vbankval.id}"><i class="icon_TV"></i>{$vbankval.bankname}</a></li>
+    {/volist}
   </ul>
   </div>
   <!--栏目-->
@@ -72,7 +122,7 @@
  <div class="selectNumberScreen">
  <div class="hasBeenSelected">
 		<dl>
-			<dt>电视剧：</dt>
+			<dt>{volist name='thisb' id='thisbn'}{$thisbn.bankname}{/volist}：</dt>
 			<dd style="display:none" class="clearDd">
 				<div class="clearList"></div>
 				<div style="display:none;" class="eliminateCriteria">清除筛选条件</div>
@@ -80,81 +130,91 @@
 		</dl>
 	</div>
 	<div id="selectList" class="screenBox screenBackground">
-     <dl class="listIndex" attr="terminal_brand_s">
-      <dt class="l_f">分类：</dt>
-      <dd><a href="javascript:void(0)" values2="" values1="" attrval="全部" class="selected">全部</a>
-      <a href="javascript:void(0)" attrval="人文军旅">VIP</a>
-      <a href="javascript:void(0)" attrval="人文军旅">免费</a>
-
-     </dl>
-     <dl class="listIndex" attr="terminal_os_s">
-	   <dt class="l_f">标签：</dt>
-	  <dd>
-      <a href="javascript:void(0)" values2="" values1="" attrval="全部" class="selected">全部</a>
+    <dl class="listIndex" attr="terminal_os_s">
+	     <dt class="l_f">类别：</dt>
+	  <dd id="classDd">
+       <a href="javascript:void(0)"  values1="0" attrval="全部" class="selected">全部</a>
       {volist name='vclass' id="valclass"}
-      <a href="javascript:void(0)" values2="" values1="" attrval="治愈">{$valclass.classname}</a> 
+      <a class="classA" href="javascript:void(0)"  values1="c{$valclass.id}" values2="{$valclass.id}" >{$valclass.classname}</a> 
       {/volist}
      </dd>
 	</dl>
     <dl class="listIndex" attr="terminal_os_s">
-			<dt class="l_f">地点：</dt>
-			<dd>
-            <a href="javascript:void(0)" values2="" values1="" attrval="全部" class="selected">全部</a>
-            {volist name='vplace' id='valplace'}
-            <a href="javascript:void(0)" values2="" values1="" attrval="内地">{$valplace.placename}</a>
+      <dt class="l_f">风格：</dt>
+      <dd id="styleDd">
+            <a href="javascript:void(0)" values1="0" attrval="全部" class="selected">全部</a>
+            {volist name='vstyle' id='valstyle'}
+            <a class="styleA" href="javascript:void(0)" values1="s{$valstyle.id}" >{$valstyle.stylename}</a>
             {/volist}
-			</dd>
-		</dl>
+      </dd>
+    </dl>
+    <dl class="listIndex" attr="terminal_os_s">
+      <dt class="l_f">地点：</dt>
+      <dd>
+            <a href="javascript:void(0)" values1="0" attrval="全部" class="selected">全部</a>
+            {volist name='vplace' id='valplace'}
+            <a href="javascript:void(0)" values1="p{$valplace.id}" >{$valplace.placename}</a>
+            {/volist}
+      </dd>
+    </dl>
    </div> 
  </div>
  <!---->
- <div class="container_style ">
- <div class="tab_box" id="sort_btn_wrap">
-  <a href="javascript:" class="hover">最新</a>
-  <a href="javascript:">最热</a>
-  <a href="javascript:">新上映</a>
-  <a href="javascript:">预告</a>
-  </div>
- </div>
+
 </div>
 <!--列表展示-->
 <div class="movielist" id="movie_list">
-
-  {volist name="video" id="valvideo"}
-  <ul class="clearfix">
+  <ul class="clearfix" id="videoul">
+    {volist name='video' id='videoval'}
     <li class="movie_theme">
-     <i class="icon_b rb_ico"></i>
-    <a href="../videoplay/{$valvideo.id}" class="movie_img">
-     <img src="{$valvideo.vpic}"  width="183px;"/>
+      {volist name='end' id='endval'}
+        {eq name='$endval.id' value='$videoval.id'}
+        {eq name='$endval.vend' value='1'}
+        <i class="icon_b rb_ico"></i>
+        {else}
+        <i class="icon_b yg_ico"></i>
+        {/eq}
+        {/eq}
+        {/volist}
+    <a href="../detail/{$videoval.id}" class="movie_img">
+    <img src="{$videoval.vpic}"  width="183px;"/>
      <span class="v_title">
-      <em>更新至24集</em>
+      <em>
+        {volist name='end' id='endval'}
+        {eq name='$endval.id' value='$videoval.id'}
+        {eq name='$endval.vend' value='1'}
+        全
+        {else}
+        更新至
+        {/eq}
+        {/eq}
+        {/volist}
+        <font color="red">
+        {volist name='num' id='numval'}
+        {eq name='$numval.tid' value='$videoval.id'}
+        {$numval.count}
+        {/eq}
+        {/volist}</font>&ensp;集
+      </em>
       <!-- 评分 -->
-      <i class="fraction">4.5分</i>
+      <i class="fraction">
+      {volist name='mark' id='markval'}
+      {eq name='$markval.tid' value='$videoval.id'}
+      {$markval.ave}分
+      {/eq}  
+      {/volist}
+      </i>
      </span>
     </a>
     <div class="movie_title">
-      <p class="movie_name"><a href="#" class="name">{$valvideo.videoname}</a><span class="status">热播</span></p>
-      <p class="Description">{$valvideo.videocountent}</p>
+      <p class="movie_name"><a href="#" class="name">{$videoval.vname}</a><span class="status">热播</span></p>
+      <p class="Description">{$videoval.vcountent|mb_substr=0,12,'utf-8'}...</p>
      </div>
     </li>
+    {/volist}
   </ul>
-  {/volist}
-
-
-
   <!--分页样式-->
-   <div class="Paging">
-     <a href="#" class="pn-prev disabled">&lt;上一页</a>
-	 <a href="#" class="on">1</a>
-	 <a href="#">2</a>
-	 <a href="#">3</a>
-	 <a href="#">4</a>
-     <a href="#">...</a>
-     <a href="#">12</a>
-	 <a href="#">下一页&gt;</a>
-	 <a href="#">尾页</a>
-	<span class="p-skip"><em>共<b>232</b>页&nbsp;&nbsp;到第</em><input id="page_jump_num" value="1" onkeydown="javascript:if(event.keyCode==13){page_jump();return false;}" class="input-txt"><em>页</em><a href="javascript:page_jump();" class="btn btn-default">确定</a></span>
-   </div>
+   {$page}
   
 </div>
 </div>
@@ -193,6 +253,7 @@ for (i = 0; i < dlNum.length; i++) {
 }
 var refresh = "true";
 $(".listIndex a ").bind("click",function(){
+  var id = $(this).attr('values1');
 	var text =$(this).text();
 	var selectedShow = $(".selectedShow");
 	var textTypeIndex =$(this).parents("dl").index();
@@ -201,14 +262,33 @@ $(".listIndex a ").bind("click",function(){
 	$(".clearDd").show();
 	$(".selectedShow").eq(index).show();
 	$(this).addClass("selected").siblings().removeClass("selected");
-	selectedShow.eq(index).find("span").text(textType);
+  selectedShow.eq(index).find("span").text(textType);
+	selectedShow.eq(index).find("label").attr('value',id);
 	selectedShow.eq(index).find("label").text(text);
 	var show = $(".selectedShow").length - $(".selectedShow:hidden").length;
 	if (show > 1) {
 		$(".eliminateCriteria").show();
 	}
-   
+  //执行他妈死了
+  $('#movie_list .clearfix').html('');
+  var list = $('.selectedShow:visible');
+  var data = "*b"+{volist name='thisb' id='thisbn'}{$thisbn.id}{/volist};//你在给我出个字母试试！？
+  $.each(list,function(index, item){
+    data += ($(item).find('label').attr('value'));//拼接死你妈了！
+  });
+  //console.log(data);
+  $.ajax({
+    type:'post',
+    url:'http://www.damowang.com/index/Ajax/listAjax',    
+    data:"data="+data,//脑残一样！
+    success:videoChange,
+  })
+  function videoChange($data)
+  {
+    $('#videoul').html($data);
+  }
 });
+//--------------------------------关闭按钮--------------------------------
 $(".selectedShow em").bind("click",function(){
 	$(this).parents(".selectedShow").hide();
 	var textTypeIndex =$(this).parents(".selectedShow").index();
@@ -218,29 +298,98 @@ $(".selectedShow em").bind("click",function(){
 	if($(".listIndex .selected").length < 2){
 		$(".eliminateCriteria").hide();
 	}
+  //执行他妈死了
+  $('#movie_list .clearfix').html('');
+  var list = $('.selectedShow:visible');
+  var data = "*b"+{volist name='thisb' id='thisbn'}{$thisbn.id}{/volist};//你在给我出个字母试试！？
+  $.each(list,function(index, item){
+    data += ($(item).find('label').attr('value'));//拼接死你妈了！
+  });
+  //console.log(data);
+  $.ajax({
+    type:'post',
+    url:'http://www.damowang.com/index/Ajax/listAjax',    
+    data:"data="+data,//脑残一样！
+    success:videoChange,
+  })
+  function videoChange($data)
+  {
+    $('#videoul').html($data);
+  }
 });
-
+//--------------------------------点击class style变换--------------------------------
+$('.classA').click(function() {
+  $('.styleA').remove();
+  //alert($(this).attr('values2'));
+  $.ajax({
+    url:'http://www.damowang.com/index/Ajax/styleChange',
+    data:'cid='+$(this).attr('values2'),
+    type:'post',
+    //建议别读。读了特么的烦死了
+    success:function($data){
+      $('#styleDd').append($data);
+      $(".listIndex a ").bind("click",function(){
+      var id = $(this).attr('values1');
+      var text =$(this).text();
+      var selectedShow = $(".selectedShow");
+      var textTypeIndex =$(this).parents("dl").index();
+      var textType =$(this).parent("dd").siblings("dt").text();
+      index = textTypeIndex -(2);
+      $(".clearDd").show();
+      $(".selectedShow").eq(index).show();
+      $(this).addClass("selected").siblings().removeClass("selected");
+      selectedShow.eq(index).find("span").text(textType);
+      selectedShow.eq(index).find("label").attr('value',id);
+      selectedShow.eq(index).find("label").text(text);
+      var show = $(".selectedShow").length - $(".selectedShow:hidden").length;
+      if (show > 1) {
+        $(".eliminateCriteria").show();
+      }
+      //执行他妈死了
+      $('#movie_list .clearfix').html('');
+      var list = $('.selectedShow:visible');
+      var data = "*b"+{volist name='thisb' id='thisbn'}{$thisbn.id}{/volist};//你在给我出个字母试试！？
+      $.each(list,function(index, item){
+        data += ($(item).find('label').attr('value'));//拼接死你妈了！
+      });
+      //console.log(data);
+      $.ajax({
+        type:'post',
+        url:'http://www.damowang.com/index/Ajax/listAjax',    
+        data:"data="+data,//脑残一样！
+        success:videoChange,
+      })
+      function videoChange($data)
+      {
+        $('#videoul').html($data);
+      }
+    });}});
+});//建议别读。读了特么的烦死了
+//--------------------------------清除所有选择的--------------------------------
 $(".eliminateCriteria").bind("click",function(){
 	$(".selectedShow").hide();
 	$(this).hide();
 	$(".listIndex a ").removeClass("selected");
+  //执行他妈死了
+  $('#movie_list .clearfix').html('');
+  var list = $('.selectedShow:visible');
+  var data = "*b"+{volist name='thisb' id='thisbn'}{$thisbn.id}{/volist};//你在给我出个字母试试！？
+  $.each(list,function(index, item){
+    data += ($(item).find('label').attr('value'));//拼接死你妈了！
+  });
+  //console.log(data);
+  $.ajax({
+    type:'post',
+    url:'http://www.damowang.com/index/Ajax/listAjax',    
+    data:"data="+data,//脑残一样！
+    success:videoChange,
+  })
+  function videoChange($data)
+  {
+    $('#videoul').html($data);
+  }
 }); 
-/*********搜索*********/
-function submit_btn(){
-	 $(".search_style input[type$='text']").each(function(n){
-		  if($(this).val()=="")
-          {
-               
-			   layer.alert("搜索框不能为空！",{
-                title: '提示框',				
-				icon:0,								
-          }); 		    
-            return false;            
-          } 
-		 else{
-			 location.href="search_page.html";
-			 
-			 }
-		 })		
-}
+$('.tab_box a').click(function(){
+  alert($(this).attr('value'));
+});
 </script>
