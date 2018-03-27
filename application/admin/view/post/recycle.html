@@ -201,7 +201,7 @@ function member_del(obj,id,pid,type){
 	layer.confirm('确认要恢复吗？',function(index){
 		$(obj).parents("tr").remove();
 		$.ajax({
-			url:'http://www.damowang.com/admin/Postajax/huifu',
+			url:'http://angel.qvbilam.xin/admin/Postajax/huifu',
 			data:data,
 			type:'post',
 			success:success
@@ -223,7 +223,7 @@ function datadel()
 			$('input:checked').eq(1).parents("tr").remove();
 			data = {id:id,type:type};
 			$.ajax({
-				url:'http://www.damowang.com/admin/Postajax/huifu',
+				url:'http://angel.qvbilam.xin/admin/Postajax/huifu',
 				data:data,
 				type:'post',
 			});

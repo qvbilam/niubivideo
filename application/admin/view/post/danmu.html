@@ -208,7 +208,7 @@ $(function(){
 /*评论-删除*/
 function member_del(obj,id,pid){
 	$.ajax({
-		url:'http://www.damowang.com/admin/Postajax/danmudel',
+		url:'http://angel.qvbilam.xin/admin/Postajax/danmudel',
 		data:"id="+pid,
 		type:'post',
 		success:success
@@ -232,7 +232,7 @@ function datadel()
 			id = $('input:checked').eq(1).attr('values1');
 			$('input:checked').eq(1).parents("tr").remove();
 			$.ajax({
-				url:'http://www.damowang.com/admin/Postajax/danmudel',
+				url:'http://angel.qvbilam.xin/admin/Postajax/danmudel',
 				data:"id="+id,
 				type:'post',
 				success:asd,
