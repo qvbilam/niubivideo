@@ -140,10 +140,10 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
-        '__INDEX__' => 'http://www.damowang.com/static/index/',
-        '__ADMIN__' => 'http://www.damowang.com/static/admin/',
-        '__BOOTS__' => 'http://www.damowang.com/static/bootstrap/',
-        '__TREES__' => 'http://www.damowang.com/static/tree/',
+        '__INDEX__' => 'http://angel.qvbilam.xin/static/index/',
+        '__ADMIN__' => 'http://angel.qvbilam.xin/static/admin/',
+        '__BOOTS__' => 'http://angel.qvbilam.xin/static/bootstrap/',
+        '__TREES__' => 'http://angel.qvbilam.xin/static/tree/',
         '__DANMU__' => 'static/danmu/', 
         '__PINGFEN__' => 'static/pingfen/', 
     ],
