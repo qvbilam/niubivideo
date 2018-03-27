@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="page-container">
-	<form action="http://www.damowang.com/admin/video/videoAddDo" method="post" class="form form-horizontal" id="form-article-add" enctype="multipart/form-data">
+	<form action="http://angel.qvbilam.xin/admin/video/videoAddDo" method="post" class="form form-horizontal" id="form-article-add" enctype="multipart/form-data">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>视频板块：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
@@ -149,7 +149,7 @@
 
 	//获取所有select
 	$.ajax({
-		url: 'http://www.damowang.com/admin/videoajax/videoajax',
+		url: 'http://angel.qvbilam.xin/admin/videoajax/videoajax',
   		type: 'post',
   		success:success
 	});
@@ -157,7 +157,7 @@
 	$('input[name="videoname"]').blur(function () {
 		name = $('input[name="videoname"]').val();
 		$.ajax({
-		url: 'http://www.damowang.com/admin/tovideoajax/tovideoajax',
+		url: 'http://angel.qvbilam.xin/admin/tovideoajax/tovideoajax',
   		type: 'post',
   		data: "name="+name,
   		success:tovideo
@@ -172,7 +172,7 @@
 			$('input[name="num"]').attr("disabled",false);;
 			namenum = $('input[name="videoname"]').val();
 			$.ajax({
-				url: 'http://www.damowang.com/admin/Videoajax/videonumajax',
+				url: 'http://angel.qvbilam.xin/admin/Videoajax/videonumajax',
   				type: 'post',
   				data: "num="+namenum,
   				success:videonum

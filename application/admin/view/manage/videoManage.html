@@ -166,7 +166,7 @@
 						<a onclick="huifuAll()" class="btn btn-success radius">
 							<i class="Hui-iconfont">&#xe6de;</i> 批量恢复
 						</a> 
-						<a class="btn btn-primary radius" href='http://www.damowang.com/admin/video/videoadd'><i class="Hui-iconfont">&#xe600;</i> 添加视频</a></span> 
+						<a class="btn btn-primary radius" href='http://angel.qvbilam.xin/admin/video/videoadd'><i class="Hui-iconfont">&#xe600;</i> 添加视频</a></span> 
 					<span class="r">共有数据：<strong>54</strong> 条</span> 
 				</div>
 				<div class="mt-20" id="Tvideo">
@@ -268,7 +268,7 @@ function myAjax(data)
 	//alert('你妈死了');
 	$('#Tvideo').children().remove();
 	$.ajax({
-		url:"http://www.damowang.com/admin/Manageajax/video",
+		url:"http://angel.qvbilam.xin/admin/Manageajax/video",
 		type:'post',
 		data:"id="+data,
 		success:success,
@@ -283,7 +283,7 @@ function success($data)
 function huifuOne(id)
 {
 	$.ajax({
-		url:'http://www.damowang.com/admin/Manage/tovideoHuifu',
+		url:'http://angel.qvbilam.xin/admin/Manage/tovideoHuifu',
 		type:'post',
 		data:'id='+id,
 		success:replace,
@@ -293,7 +293,7 @@ function huifuOne(id)
 function delOne(id)
 {
 	$.ajax({
-		url:'http://www.damowang.com/admin/Manage/tovideoDel',
+		url:'http://angel.qvbilam.xin/admin/Manage/tovideoDel',
 		type:'post',
 		data:'id='+id,
 		success:replace,
@@ -306,7 +306,7 @@ function huifuAll()
 	{
 		var id = $('input:checkbox:checked').eq(i).val();
 		$.ajax({
-			url:'http://www.damowang.com/admin/Manage/tovideoHuifu',
+			url:'http://angel.qvbilam.xin/admin/Manage/tovideoHuifu',
 			type:'post',
 			data:'id='+id,
 			success:replace,
@@ -320,7 +320,7 @@ function delAll()
 	{
 		var id = $('input:checkbox:checked').eq(i).val();
 		$.ajax({
-			url:'http://www.damowang.com/admin/Manage/tovideoDel',
+			url:'http://angel.qvbilam.xin/admin/Manage/tovideoDel',
 			type:'post',
 			data:'id='+id,
 			success:replace,

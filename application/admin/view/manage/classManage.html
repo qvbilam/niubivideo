@@ -221,7 +221,7 @@ $('#bankadd .submit').click(function(){
 			return false;
 		}
 		$.ajax({
-		url:'http://www.damowang.com/admin/Manageajax/banksel',
+		url:'http://angel.qvbilam.xin/admin/Manageajax/banksel',
 		type:'post',
 		data:'name='+name,
 		success:success
@@ -231,7 +231,7 @@ $('#bankadd .submit').click(function(){
 			name = $('#bankadd input').val();
 			if(data == 'true'){
 				$.ajax({
-					url:'http://www.damowang.com/admin/Manageajax/bankins',
+					url:'http://angel.qvbilam.xin/admin/Manageajax/bankins',
 					type:'post',
 					data:'name='+name,
 					success:success,
@@ -259,7 +259,7 @@ $('#classadd .submit').click(function(){
 	if($('#classadd input').val().length<2){alert('名字长度不能小于2');return false;}
 	cdata = {'id':id,'name':name}; 
 	$.ajax({
-		url:'http://www.damowang.com/admin/Manageajax/classsel',
+		url:'http://angel.qvbilam.xin/admin/Manageajax/classsel',
 		type:'post',
 		data:cdata,
 		success:success
@@ -271,7 +271,7 @@ $('#classadd .submit').click(function(){
 			name = $('#classadd input').val();
 			cdata = {'id':id,'name':name};
 			$.ajax({
-				url:'http://www.damowang.com/admin/Manageajax/classins',
+				url:'http://angel.qvbilam.xin/admin/Manageajax/classins',
 				type:'post',
 				data:cdata,
 				success:success,
@@ -296,7 +296,7 @@ $('#style').click(function(){
 $('.bankselect').change(function(){
 	bid = $('.bankselect option:selected').val();
 	$.ajax({
-		url:'http://www.damowang.com/admin/Manageajax/bankchange',
+		url:'http://angel.qvbilam.xin/admin/Manageajax/bankchange',
 		type:'post',
 		data:'id='+bid,
 		success:changebid,
@@ -325,7 +325,7 @@ $('#styleadd .submit').click(function(){
 				alert('名字长度不能小于2');return false;
 			}
 			$.ajax({
-				url:'http://www.damowang.com/admin/Manageajax/stylesel',
+				url:'http://angel.qvbilam.xin/admin/Manageajax/stylesel',
 				data:data,
 				type:'post',
 				success:success
@@ -339,7 +339,7 @@ $('#styleadd .submit').click(function(){
 					bid = $('#styleadd .bankselect option:selected').val();
 					cid = $('#styleadd .classselect option:selected').val();
 					data = {'name':name,'bid':bid,'cid':cid};					$.ajax({
-						url:'http://www.damowang.com/admin/Manageajax/styleins',
+						url:'http://angel.qvbilam.xin/admin/Manageajax/styleins',
 						data:data,
 						type:'post',
 						success:success,

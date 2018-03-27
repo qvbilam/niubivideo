@@ -118,7 +118,7 @@
 				<span class="l">
 					<a onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
 				</span> <span class="r">共有数据：<strong>54</strong> 条</span> &emsp;
-				<a class="btn btn-success" id="" name="" href='http://www.damowang.com/admin/video/videoadd'>添加</a>
+				<a class="btn btn-success" id="" name="" href='http://angel.qvbilam.xin/admin/video/videoadd'>添加</a>
 			</div>
 			<div class="mt-10">
 				<table class="table table-border table-bordered table-bg table-sort" id="videosel">
@@ -194,7 +194,7 @@
 function deleteone(e)
 {
 	$.ajax({
-	url:'http://www.damowang.com/admin/manage/tovideoDel',
+	url:'http://angel.qvbilam.xin/admin/manage/tovideoDel',
 	data:'id='+e,
 	type:'post',
 	success:placere,
@@ -207,7 +207,7 @@ function datadel()
 	{
 		var id = $('input:checkbox:checked').eq(i).val();
 		$.ajax({
-		url:'http://www.damowang.com/admin/manage/tovideoDel',
+		url:'http://angel.qvbilam.xin/admin/manage/tovideoDel',
 		data:'id='+id,
 		type:'post',
 		success:placere,

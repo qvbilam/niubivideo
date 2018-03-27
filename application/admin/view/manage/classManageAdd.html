@@ -52,7 +52,7 @@
 $('.bank').change(function(){
   //alert($('.bank').selected().val());
     $.ajax({
-      url:'http://www.damowang.com/admin/Videoajax/videoajax',
+      url:'http://angel.qvbilam.xin/admin/Videoajax/videoajax',
       type:'post',
       success:success,
     });
@@ -81,7 +81,7 @@ $('#submit').click(function(){
   "{'bid':bid,'cid':cid,'name':name}"*/
  // console.log(data);
   $.ajax({
-      url:'http://www.damowang.com/admin/Videoajax/nameAdd',
+      url:'http://angel.qvbilam.xin/admin/Videoajax/nameAdd',
       type:'post',
       data:{'data':data},
       success:nameAdd,
