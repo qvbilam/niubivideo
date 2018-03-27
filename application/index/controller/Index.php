@@ -6,7 +6,8 @@ class Index extends Controller
 {
     public function index()
     {
-   		$this->assign('user',session('user'));
+        $name = session('name');
+   		$this->assign('name',$name);
 	    return $this->fetch('index');
     } 
     public function code()

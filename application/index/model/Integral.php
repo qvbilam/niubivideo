@@ -1,6 +1,6 @@
 <?php
 
-namespace app\idnex\model;
+namespace app\index\model;
 use think\Model;
 
 class Integral extends Model

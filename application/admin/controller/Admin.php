@@ -10,7 +10,7 @@ class Admin extends Controller
 {
 	public function _initialize()
 	{	
-		session('name','admin');
+		session('name','tom');
 		$rold_id = Db::name('user')->where('user',session('name'))->value('roldid');
 		session('rold_id',$rold_id);
 		//查询当前的操作
@@ -32,6 +32,7 @@ class Admin extends Controller
 		}
 	}
 
+	
 	public function selectlist()
 	{
 		if(session('name') == 'admin') {

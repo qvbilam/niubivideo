@@ -113,29 +113,24 @@ class Info extends Controller
 	{
 		$res = input();
 		//判断手机号
-		/*if ($res['oldyzm'] != Session::pull($res['oldphone'])) {
+		if ($res['oldyzm'] != Session::pull($res['oldphone'])) {
 			return "旧手机号验证失败";
 		} 
 		if ($res['newyzm'] != Session::pull($res['newphone'])) {
 			return "新手机号验证码不对";
-		} */
+		} 
 		//修改手机号
 		session('user','admin');
 		$data = $this->user->where('user',session('user'))->update(['phone'=>$res['newphone']]);
 		return $data;
 	}
 
-	//绑定邮箱
+	//绑定邮箱显示页
 	public function email()
 	{
 		return $this->fetch();
 	}
 
-	//绑定身份证
-	public function idcard()
-	{
-		return $this->fetch();
-	}
 
 
 	//空操作

@@ -41,13 +41,13 @@
 	<![endif]-->
 
 	</head>
-	<body class="style-3">
+	<body class="style-3" id="formform">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
 					
 					<!-- Start Sign In Form -->
 					
-					  <form action="index/user/doregister" class="fh5co-form animate-box" data-animate-effect="fadeInRight" method='post' id="formform">
+					  <form class="fh5co-form animate-box" data-animate-effect="fadeInRight" > 
 						<h2>注册账号</h2>
 						<div class="form-group">
 							<div class="alert alert-success" role="alert">请输入手机号
@@ -82,7 +82,7 @@
 						<div class="form-group">
 							<input type="button" value="注册" class="btn btn-primary" id='tijiao'>
 						</div>
-					</form>
+					 </form> 	
 
 				</div>
 			</div>
@@ -205,7 +205,7 @@
 			return false;
 		}
 
-		var data = $('#formform');
+		var data = $('#formform input');
 		$.ajax({
 			type: 'post',
 			url:'index/user/doregister',
@@ -216,8 +216,6 @@
 	});
 	function succ(data)
 	{ 
-		console.log(data);
-		return false;
 		if (data == 1 ) {
 			alert('注册成功');
 			 window.location.href = '../index';

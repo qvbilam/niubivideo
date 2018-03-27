@@ -20,12 +20,14 @@
     Route::rule('password', 'index/info/password');//修改密码
     Route::rule('bindphone', 'index/info/bindphone');//手机验证
     Route::rule('email', 'index/info/email');//邮箱验证
-    Route::rule('idcard', 'index/info/idcard');//实名
-    Route::rule('points', 'index/jifen/points');//实名
+    Route::rule('bonus', 'index/jifen/bonus');//积分兑换
+    Route::rule('points', 'index/jifen/points');//积分页面
     Route::rule('collection', 'index/jifen/collection');//收藏
     Route::rule('foot', 'index/jifen/foot');//观看历史 
-    Route::rule('suggest', 'index/jifen/suggest');//观看历史 
-    Route::rule('news', 'index/jifen/news');//观看历史 
+    Route::rule('suggest', 'index/jifen/suggest');//意见反馈 
+    Route::rule('news', 'index/jifen/news');//我的消息 
+    Route::rule('coupon', 'index/jifen/coupon');//ViP 
+    Route::rule('blog', 'index/jifen/blog');//ViP 
 
 
 

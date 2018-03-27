@@ -67,12 +67,7 @@ class User extends Controller
 		return $this->fetch('forgot');
 	}
 
-	//空操作
-	public function _empty()
-	{
-		$this->redirect('/');
-	}
-
+	
 
 	//第三方登陆
 	public function disan ()
@@ -80,9 +75,12 @@ class User extends Controller
 		$open = new Open();
 		$code = $_GET['code'];
 		$data =$open->me($code);
-		$res = $this->user->where('user',$data['uniq'])->value('user');
+		//判断用户是否存在
+		$res = $this->user->where('user',$data['uniq'])->find();
 		if (!empty($res)) {
-			session('name',$res);	
+			$res = $res->toarray();
+			session('name',$res['user']);	
+			session('uid',$res['uid']);	
 			$this->success('登陆成功','/');
 			echo 1;	
 		} else {
@@ -95,5 +93,29 @@ class User extends Controller
 			$this->error('登陆失败','login');
 		}
 		
+	}
+
+	//邮箱验证
+	public function doemail()
+	{	
+		$res = input('get.email');
+		$data =$this->user->send($res);
+			
+	}
+
+	//邮箱绑定
+	public function bindemail()
+	{
+		$res = input('post.');
+		$data = $this->user->addemail($res);
+		dump($data);	
+	}
+	//找回密码
+	public function doforgot()
+	{
+		$res = input('post.');
+		return $res;
+		$data = $this->user->forgot($res);
+		return $data;
 	}
 }

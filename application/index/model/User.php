@@ -6,6 +6,9 @@ use think\Model;
 use think\Db;
 use duanxin\Ucpaas;
 use think\Session;
+use phpmailer\PHPMailer;
+use phpmailer\SMTP;
+
 
 
 class User extends Model
@@ -24,6 +27,7 @@ class User extends Model
 			return "用户被限制登录";
 		}
 		session('name',$data['user']);
+		session('uid',$data['uid']);
 		return 0;		
 	}
 
@@ -92,7 +96,7 @@ class User extends Model
 		return array_merge($res1,$res2);
 	}
 
-
+	//修改密码
 	public function dopass($data)
 	{
 		$res = Db::name('user')->where('user',session('name'))->find();
@@ -110,14 +114,33 @@ class User extends Model
 		}
 	}
 
-
+	//添加手机号
 	public function addphone($data)
 	{
-		/*if ($data['yzm'] != Session::pull($data['phone'])) {
+		if ($data['yzm'] != Session::pull($data['phone'])) {
 			return '验证码不对';
-		} */
+		} 
 		$res =  $this->where('user',session('user'))->update(['phone'=>$data['phone']]);
-		return $res;
+		if ($res == 0) {
+			return 1;
+		}
+		$arr = [];
+    	$arr['intexotime'] = time();
+    	$arr['uid'] = session('uid');
+    	$arr['intchange'] = 50;
+    	$arr['remark'] = '第一次绑定手机号，+50积分';
+    	$arr['bianhua'] = 'add';
+    	$set = Db::name('integralinfo')->insert($arr);
+    	if ($set == 0) {
+    		return 2;
+    	}
+    	$num = Db::name('integral')->where('uid',session('uid'))->value('number');
+    	$num = $num + 50;
+    	$str = Db::name('integral')->where('uid',session('uid'))->update(['number'=>$num]);
+    	if ($str == 0 ) {
+    		return 3;
+    	} 
+		return 0;
 	}
 
 	//第三方登陆
@@ -131,6 +154,8 @@ class User extends Model
 		$arr['regtime'] = time();
 		$res = $this->save($arr);
 		$uid = $this->uid;
+		session('uid',$uid);
+		session('name',$arr['user']);
 		//插入到userinfo表中
 		$info = [];
 		$info['sex'] = $data['sex'];
@@ -140,4 +165,85 @@ class User extends Model
 		$str = $userinfo->save($info);
 		return $res;
 	}
+
+	//发送邮箱验证码
+	public function send($data)
+	{
+        
+       
+        $email =$data;
+       
+            $subject='大魔王影院邮箱绑定';
+            $str =mt_rand(100000, 999999);
+            $content="尊敬的大魔王影院，本次的验证码是 $str 请勿转告他人，祝生活愉快";
+            $res = sendMail($email,$subject,$content);
+            if ($res) {
+               session('email',$str);
+            }
+        }
+            
+    //邮箱绑定
+    public function addemail($data)
+    {
+    	
+    	if ($data['yzm'] != session('email') ) {
+    		return '验证码输入错误';
+    	}
+    	//查询邮箱是否绑定
+    	$str = Db::name('userinfo')->where('uid',session('uid'))->value('email');
+    	$addji = 0;
+    	//第一次绑定邮箱，增加30积分
+    	if (!empty($str)) {
+    		$addji = 30;
+    	}
+    	//修改邮箱
+    	$res = Db::name('userinfo')->where('uid',session('uid'))->update(['email'=>$data['email']]);
+    	if ($res == 0) {
+    		return 1;
+    	}	
+    	//判断是否第一次绑定邮箱
+    	if ($addji == 0) {
+    		return 0;
+    	}
+    	//增加积分
+    	$arr = [];
+    	$arr['intexotime'] = time();
+    	$arr['uid'] = session('uid');
+    	$arr['intchange'] = $addji;
+    	$arr['remark'] = '第一次绑定邮箱，+30积分';
+    	$arr['bianhua'] = 'add';
+    	$set = Db::name('integralinfo')->insert($arr);
+    	if ($set == 0) {
+    		return 2;
+    	} 
+    	$num = Db::name('integral')->where('uid',session('uid'))->value('number');
+    	$num = $num + $addji;
+    	$dis = Db::name('integral')->where('uid',session('uid'))->update(['number'=>$num]);
+    	if ($dis == 1) {
+    		return 0;
+     	} else {
+     		return 3;
+     	}
+    }
+
+    //找回密码
+    public function forgot($data)
+    {
+    	$phone =$data['phone'];
+    	//查找手机号
+    	$res = $this->where('phone',$phone)->find();
+    	if (empty($res)) {
+    		return 2;
+    	} 
+    	//判断验证码
+    	if($data['yzm'] != session($phone)) {
+    		return 3;
+    	}
+    	//修改密码
+    	$pass = md5($data['pass']);
+    	$res = $this->where('phone',$phone)->update(['password'=>$pass]);
+    	return $res;
+    }
+
+
 }

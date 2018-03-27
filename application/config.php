@@ -143,7 +143,6 @@ return [
         '__INDEX__' => 'http://www.damowang.com/static/index/',
         '__ADMIN__' => 'http://www.damowang.com/static/admin/',
         '__BOOTS__' => 'http://www.damowang.com/static/bootstrp/',
-        '__DANMU__' => 'http://www.damowang.com/static/danmu/',
         '__HTTP__' => 'http://www.damowang.com/',
     ],
     // 默认跳转页面对应的模板文件

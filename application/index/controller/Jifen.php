@@ -7,6 +7,13 @@ use think\Db;
 
 class Jifen extends Controller
 {
+	protected $integralinfo;
+	public function _initialize()
+	{
+		$this->integralinfo = new Integralinfo();
+	}
+
+
 	//积分
 	public function points()
 	{
@@ -23,10 +30,8 @@ class Jifen extends Controller
 	//每日签到
 	public function qiandao()
 	{
-		//$res = input('get.uid');
-		$res = 1;
-		$integralinfo = new Integralinfo();
-		$str = $integralinfo->meiri($res);
+		$res = input('get.uid');
+		$str = $this->integralinfo->meiri($res);
 		return  $str;
 	}
 
@@ -56,8 +61,6 @@ class Jifen extends Controller
 		$res = input();
 		$feed = new Feed();
 		$data = $feed->addping($res);
-		dump($data);
-
 	}
 
 
@@ -67,16 +70,48 @@ class Jifen extends Controller
 		return $this->fetch();
 	}
 
+	//消息
+	public function blog()
+	{
+		return $this->fetch();
+	}
+	
+
+	//VIp信息
+	public function coupon()
+	{
+		return $this->fetch();
+	}
+	//积分兑换显示页
+	public function bonus()
+	{
+		return $this->fetch();
+	}
+
+	//积分兑换7天VIP
+	public  function duivip7()
+	{
+		$res =[];
+		$res[0] = input('get.num');
+		$res[1] = 7;
+		$res = $this->integralinfo->duivip($res);
+		return $res;
+	}
+
+	//积分兑换30天VIP
+	public  function duivip30()
+	{
+		$res =[];
+		$res[0] = input('get.num');
+		$res[1] = 30;
+		$res = $this->integralinfo->duivip($res);
+		return $res;
+	}
+
+
 	//空操作
 	public function _empty()
 	{
 		$this->redirect('/');
 	}
-
-	//VIp信息
-	public function coupon()
-	{
-
-	}
-
 }
