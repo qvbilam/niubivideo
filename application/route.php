@@ -12,7 +12,23 @@
 	use think\Route;
 
     //前台傻狗子的用户路由
-
+    Route::rule('/', 'index/index/index');//主页
+    Route::rule('register', 'index/user/register');//注册
+    Route::rule('login', 'index/user/login');//登陆
+    Route::rule('forgot', 'index/user/forgot');//忘记密码
+    Route::rule('info', 'index/info/info');//个人中心
+    Route::rule('safety', 'index/info/safety');//安全设置
+    Route::rule('password', 'index/info/password');//修改密码
+    Route::rule('bindphone', 'index/info/bindphone');//手机验证
+    Route::rule('email', 'index/info/email');//邮箱验证
+    Route::rule('bonus', 'index/jifen/bonus');//积分兑换
+    Route::rule('points', 'index/jifen/points');//积分页面
+    Route::rule('collection', 'index/jifen/collection');//收藏
+    Route::rule('foot', 'index/jifen/foot');//观看历史 
+    Route::rule('suggest', 'index/jifen/suggest');//意见反馈 
+    Route::rule('news', 'index/jifen/news');//我的消息 
+    Route::rule('coupon', 'index/jifen/coupon');//ViP 
+    Route::rule('blog', 'index/jifen/blog');//ViP 
     //后台傻狗子的用户路由
 
     //前台御用视屏路由
