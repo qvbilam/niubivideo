@@ -56,9 +56,9 @@
 						</div>
 						<hr/>
 						<div class="pointsTitle">
-						   <div class="usable">可用积分<span id='number'>{$res[0]['number']}</span></div>
+						   <div class="usable">可用积分<span id='number'>{$res['number']}</span></div>
 						   <!-- <div class="pointshop"><a href="#"><i><img src="__INDEX__images/u5.png" /></i>积分商城</a></div> -->
-						   <div class="signIn"><a href="javasprice:" onclick="jifen({$res[0]['uid']})"><i class="am-icon-calendar"></i><em>+5</em>每日签到</a></div>
+						   <div class="signIn"><a href="javasprice:" onclick="jifen({$res['uid']})"><i class="am-icon-calendar"></i><em>+5</em>每日签到</a></div>
 						</div>
 						<div class="pointlist am-tabs" data-am-tabs>
 							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
@@ -78,12 +78,16 @@
 											</tr>
 										</thead>										
 										<tbody>
-											{foreach $res as $val}
+											{foreach $data as $val}
 											<tr>
 												<td class="pointType">{$val['remark']}</td>
+												{if $val['bianhua'] == 'add'} 
 												<td class="pointNum">+{$val['intchange']}</td>
-												<td class="pointTime">{$val['intexotime']|date='Y-m-d H:i:s',###}</td>
-											</tr>
+												{else}
+												<td class="pointNum">-{$val['intchange']}</td>		
+												{/if}
+												<td class="pointTime">{$val['intexotime']|date='Y-m-d H:i:s',###}</td>												
+											</tr>	
 											{/foreach}
 										</tbody>
 									</table>
@@ -100,8 +104,8 @@
 											</tr>
 										</thead>
 										<tbody>
-											{foreach $res as $val}
-											{if $val['bianhua'] == 0} 
+											{foreach $data as $val}
+											{if $val['bianhua'] == 'add'} 
 											<tr>
 												<td class="pointType">{$val['remark']}</td>
 												<td class="pointNum">+{$val['intchange']}</td>
@@ -123,11 +127,11 @@
 											</tr>
 										</thead>
 										<tbody>
-											{foreach $res as $val}
-											{if $val['bianhua'] == 1}
+											{foreach $data as $val}
+											{if $val['bianhua'] == 'dec'}
 											<tr>												
 												<td class="pointType">{$val['remark']}</td>
-												<td class="pointNum">+{$val['intchange']}</td>
+												<td class="pointNum">{$val['intchange']}</td>
 												<td class="pointTime">{$val['intexotime']|date='Y-m-d H:i:s',###}</td>
 											</tr>
 											{/if}
@@ -145,26 +149,13 @@
 				</div>
 				<!--底部-->
 				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
+					<div style="" >
+                           
+                            <a href="#">合作伙伴</a>
+                            <a href="#">联系我们</a>
+                            <a href="#">网站地图</a>
+                            <em><a href="#"><img src="__INDEX__images/ghs.png" />京公网安备：冀ICP备18004556号-1</a> &nbsp;&nbsp;&nbsp; <a href="#"><img src="__INDEX__images/xy.png" />中国互联网诚信联盟</a></em>
+                       </div>
 				</div>
 			</div>
 

@@ -1,15 +1,17 @@
 <?php
 namespace app\admin\controller;
 use think\Controller;
+use app\admin\controller\Admin;
 use app\admin\model\Vbank;
 use app\admin\model\Vclass;
 use app\admin\model\Vstyle;
 use app\admin\model\Vtovideo;
 use app\admin\model\Video;
-class Manage extends Controller
+class Manage extends Admin
 {
-	public function videoManage()
+	public function videomanage()
 	{
+		$this->selectlist();
 		//查询所有版块bank
 		$vb = new Vbank();
 		$vbank = $vb->manage();
@@ -33,6 +35,7 @@ class Manage extends Controller
 	}
 	public function tovideoManage()
 	{
+		$this->selectlist();
 		$vb = new Vbank();
 		$bank = $vb->manage();
 		$this->assign('bank',$bank);
@@ -49,6 +52,7 @@ class Manage extends Controller
 	}
 	public function classManage()
 	{
+		$this->selectlist();
 		//查询所有版块bank
 		$vb = new Vbank();
 		$vbank = $vb->manage();
@@ -125,6 +129,7 @@ class Manage extends Controller
 	}
 	public function classBig()
 	{
+		$this->selectlist();
 		$vb = new Vbank();
 		$vbank = $vb->manage();
 		$this->assign('vbank',$vbank);
@@ -135,5 +140,15 @@ class Manage extends Controller
 		$vstyle = $vs->manage();
 		$this->assign('vstyle',$vstyle);
 		return view();
+	}
+	public function bankpic()
+	{
+		$vb = new Vbank();
+		$bank = $vb->bankpic();
+		if($bank){
+			$this->success("修改成功");
+		}else{
+			$this->error("修改失败");
+		}
 	}
 }

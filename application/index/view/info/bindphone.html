@@ -79,7 +79,7 @@
 							<label for="user-phone" class="am-form-label">验证手机</label>
 							<div class="am-form-content">
 								<input type="tel" id="user-new-phone" placeholder="绑定新手机号"
-								 required name="phone">
+								  name="phone" required>
 							</div>
 						</div>
 						<div class="am-form-group code">
@@ -115,7 +115,8 @@
 						<div class="am-form-group">
 							<label for="user-new-phone" class="am-form-label ">验证手机</label>
 							<div class="am-form-content">
-								<input type="tel" id="user-new-phone" placeholder="绑定新手机号" required  onblur="checkme()" name='newphone'>
+								<input type="tel" id="user-new-phone" placeholder="绑定新手机号" required  onblur="user-new-phone()" name='newphone'>
+								<p style='color:red' id="p"></p>
 							</div>
 						</div>
 						<div class="am-form-group code">
@@ -137,26 +138,15 @@
 				</div>
 				<!--底部-->
 				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
+					
+					
+					<div style="" >
+                           
+                            <a href="#">合作伙伴</a>
+                            <a href="#">联系我们</a>
+                            <a href="#">网站地图</a>
+                            <em><a href="#"><img src="__INDEX__images/ghs.png" />京公网安备：冀ICP备18004556号-1</a> &nbsp;&nbsp;&nbsp; <a href="#"><img src="__INDEX__images/xy.png" />中国互联网诚信联盟</a></em>
+                        </div>
 				</div>
 			</div>
 						<aside class="menu">
@@ -203,7 +193,9 @@
 		var val = $('#user-new-phone').attr('value');
 		var mobilevalid = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}$/;
 		if (!mobilevalid.test(val)) {
-			alert('请输入正确的手机号码！');			
+			$('#p').html('请输入正确的手机号');		
+		} else {
+			$('#p').html('');
 		}	
 	});	
 		

@@ -1,18 +1,17 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use think\Db;
+use app\admin\controller\Admin;
 use app\admin\model\Vbank;
 use app\admin\model\Vclass;
 use app\admin\model\Vstyle;
 use app\admin\model\Vplace;
 use app\admin\model\Video;
 use app\admin\model\Vtovideo;
-class Manageajax extends Controller
+class Manageajax extends Admin
 {
 	public function video()
 	{
-		
 		$vt = new Vtovideo();
 		$tov = $vt->manageT();
 		$this->assign('tov',$tov);

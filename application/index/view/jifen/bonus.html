@@ -68,7 +68,7 @@
 						  
 								</div>
 								<div style="margin-top:20px;margin-bottom: 20px;">
-									<p>我的积分 : <span style="color:red" id='jifen'> 280 </span> </p>
+									<p>我的积分 : <span style="color:red" id='jifen'> {$res} </span> </p>
 								</div>
 									<table>
 										
@@ -104,26 +104,13 @@
 				</div>
 				<!--底部-->
 				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
+					<div style="" >
+                           
+                            <a href="#">合作伙伴</a>
+                            <a href="#">联系我们</a>
+                            <a href="#">网站地图</a>
+                            <em><a href="#"><img src="__INDEX__images/ghs.png" />京公网安备：冀ICP备18004556号-1</a> &nbsp;&nbsp;&nbsp; <a href="#"><img src="__INDEX__images/xy.png" />中国互联网诚信联盟</a></em>
+                        </div>
 				</div>
 			</div>
 
@@ -166,32 +153,45 @@
 
 </html>
 <script type="text/javascript">
-	var num = $("#jifen").text();
+	var num
 		num = Number(num);
-		duinum = num -30;
+	var duinum;
 
-
+	//兑换7天会员
 	$('#vip7').click( function () {
+		num = $("#jifen").text();
 		if (num < 30 ) {
 			alert('积分不足，无法兑换');
 			return false;
 		} 
 		$.get("{:url('jifen/duivip7')}",{'num':num},function (data) {
-			if (data == 0) {
-				alert('恭喜你，兑换成功');
+			
+			if (data == 1) {
+				$('#jifen').html('');
+				duinum = num -30;
+				$('#jifen').html(duinum);
+				alert('恭喜你，兑换成功');	
+
 			} else {
 				alert('兑换失败');
 			}
 		});
 	});
 
+
+	//兑换30天会员
 	$("#vip30").click(function () {
+		num = $("#jifen").text();
 		if (num <100) {
 			alert('积分不足，无法兑换');
 			return false;
 		}
-		$.get("{:url('jifen/duivip30')}",{'unm':num},function (data) {
-			if (data == 0) {
+		console.log(num);
+		$.get("{:url('jifen/duivip30')}",{'num':num},function (data) {
+			if (data == 1) {
+				duinum = num - 100;
+				console.log(duinum);
+				$('#jifen').html(duinum);
 				alert('恭喜你，兑换成功');
 			} else {
 				alert('兑换失败');

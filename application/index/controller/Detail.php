@@ -8,10 +8,18 @@ use app\index\model\Vbank;
 use app\index\model\Vclass;
 use app\index\model\Vstyle;
 use app\index\model\Vplace;
+use app\index\model\User;
+use think\Db;
 class Detail extends Controller
 {
 	public function detail()
 	{
+		//用户信息
+        $uinfo = null;
+        if (!empty(session('name'))) {
+          $uinfo = Db::name('user')->where('user',session('name'))->find();
+        }
+         $this->assign('uinfo',$uinfo);
 		//tovideo插一条
 		$vt = new Vtovideo();
 		$tovideo = $vt->toVideoOne();
@@ -49,6 +57,15 @@ class Detail extends Controller
         $ma = new Vmark();
         $mark = $ma->markSelect();
         $this->assign('mark',$mark);
+        //当期用户是否为vip
+        $vu = new User();
+        $vuser = $vu->isvip();
+        if($vuser){
+        	$vip = 1;
+        }else{
+        	$vip = 0;
+        }
+        $this->assign('vip',$vip);
 		return view();
 	}
 }

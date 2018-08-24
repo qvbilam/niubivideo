@@ -10,6 +10,13 @@ class Jifen extends Controller
 	protected $integralinfo;
 	public function _initialize()
 	{
+		if (!isset($_SERVER['HTTP_REFERER'])){
+			header('location:http://angel.qvbilam.xin');
+			die;
+		}
+		if(empty(session('name'))) {
+			$this->error('请登录',"../login");
+		}
 		$this->integralinfo = new Integralinfo();
 	}
 
@@ -17,20 +24,25 @@ class Jifen extends Controller
 	//积分
 	public function points()
 	{
+
 		$res  = Db::name('user')
 			->alias('a')
 			->join('integral w','a.uid = w.uid')
-			->join('integralinfo c','a.uid = c.uid')
-			->where('user','admin')
-			->select();
+			
+			->where('user',session('name'))
+			->find();
+		$uid = $res['uid'];
+		$data = Db::name('integralinfo')->where('uid',$uid)->select();
 		$this->assign('res',$res);
+		$this->assign('data',$data);
 		return $this->fetch();
 	}
 
 	//每日签到
 	public function qiandao()
 	{
-		$res = input('get.uid');
+
+		$res = session('uid');
 		$str = $this->integralinfo->meiri($res);
 		return  $str;
 	}
@@ -67,12 +79,19 @@ class Jifen extends Controller
 	//我的消息
 	public function news()
 	{
+		$res = Db::name('article')->limit(10)->select();
+		$this->assign('res',$res);
 		return $this->fetch();
 	}
 
 	//消息
 	public function blog()
 	{
+		$id = input('get.id');
+		$res = Db::name('article')->where('id',$id)->find();
+		$data = Db::name('article')->limit(5)->select();
+		$this->assign('data',$data);
+		$this->assign('res',$res);
 		return $this->fetch();
 	}
 	
@@ -80,11 +99,15 @@ class Jifen extends Controller
 	//VIp信息
 	public function coupon()
 	{
+		$res = Db::name('vipinfo')->where('uid',session('uid'))->find();
+		$this->assign('res',$res);
 		return $this->fetch();
 	}
 	//积分兑换显示页
 	public function bonus()
 	{
+		$res = Db::name('integral')->where('uid',session('uid'))->value('number');
+		$this->assign('res',$res);
 		return $this->fetch();
 	}
 

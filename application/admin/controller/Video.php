@@ -1,16 +1,16 @@
 <?php
 namespace app\admin\controller;
 use think\Controller;
-use app\admin\model\Video;
+use app\admin\model\Video as Videomodel;
 class Video extends Controller
 {
 	public function aIndex()
 	{
 		return view();
 	}
-	public function videoAdd()
+	public function videoadd()
 	{
-		$vi = new Video();
+		$vi = new Videomodel();
 		//视频板块
 		$vbank = $vi->vbank();
 		$this->assign('vbank',$vbank);
@@ -19,7 +19,7 @@ class Video extends Controller
 	public function videoAddDo()
 	{
 		//dump(input());
-		$vi = new Video();
+		$vi = new Videomodel();
 		$videoadd = $vi->videoadd();
 		if($videoadd){
 			$this->success('添加视频成功','admin/manage/tovideomanage');

@@ -22,15 +22,14 @@ class User extends Controller
 	//登陆执行
 	public function dologin()
 	{
-		$res = $this->user->dologin(input());
-		echo $res;
+		$res = $this->user->dologin(input());		
+		return $res;
+		
 	}
 
 	//短信验证
 	public function phone()
 	{	
-		echo  input('phone');
-		die;
 		$res = $this->user->phone( input('phone'));
 	
 	}
@@ -82,15 +81,16 @@ class User extends Controller
 			session('name',$res['user']);	
 			session('uid',$res['uid']);	
 			$this->success('登陆成功','/');
-			echo 1;	
+		
 		} else {
-			echo 2;
-			$this->user->disan($data);
+			
+			$data = $this->user->disan($data);
 		}
-		if ($res == 1) {
-			$this->session('登陆成功','/');
+
+		if ($data == 1) {
+			$this->success('登陆成功','/');
 		} else {
-			$this->error('登陆失败','login');
+			$this->error('登陆失败','http://angel.qvbilam.xin/login');
 		}
 		
 	}

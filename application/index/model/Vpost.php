@@ -2,6 +2,10 @@
 namespace app\index\model;
 use think\Db;
 use think\Model;
+
+
+
+
 class Vpost extends Model
 {
 	public function postAdd()
@@ -9,9 +13,10 @@ class Vpost extends Model
 		//取用户ID
 		if(!empty(session('name')))
 		{
-			$name = session('name'); 
+			/*$name = session('name'); 
 			$id = Db::name('user')->where(['user'=>$name,'display'=>1])->field('id')->select();
-			$uid = $id[0];
+			$uid = $id[0];*/
+			$uid = session('uid');
 		}else{
 			$uid = 0;
 		}	
@@ -35,7 +40,20 @@ class Vpost extends Model
 	}
 	public function postSelect($vid)
 	{
-		return Db::name('vpost')->where(['vid'=>$vid,'display'=>1])->paginate(5);
+		return Db::name('vpost')->where(['vid'=>$vid,'display'=>1])->select();
 	}
+
+
+	/*public function postSelect($vid)
+	{
+		$data = Db::name('vpost')
+			->alias('vp')
+			->join('user a','vp.uid=a.uid')
+			->join('userinfo f','f.uid=a.uid')
+			->where('vid',$vid)
+			->field(['user','username','userpic','posttime','postcountent','vp.id'])
+			->select();
+		return $data;
+	}*/
 	
 }

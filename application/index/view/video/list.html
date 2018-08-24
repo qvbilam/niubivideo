@@ -222,17 +222,17 @@ html{
 <div class="footer_style">
 <div class="footer">
  <div class="copys copys-list clearfix">
-   <a href="#">网络文化经营许可证 京网文[2014]xxxxx-236号</a>
+   <a href="#">网络文化经营许可证 京网文[2014]120567-236号</a>
    <a href="#">京卫网审[2013]第0209号 网络110报警服务</a>
-   <a href="#">药品服务许可证(京)-经营2222-0029</a>
-  <a href="#">节目制作经营许可证京字670号</a>
+   <a href="#">节目制作经营许可证京字670号</a>
  </div>
 <div class="link_name">
-<a href="#">关于我们</a>|<a href="#">媒体合作</a>|<a href="#">开放平台</a>|<a href="#">广告服务</a>|<a href="#">联系我们</a>|<a href="#">工作机会</a>|<a href="#">友情链接</a></div>
-<div class="Copyright">Copyright © 2004-2017 视频名称（xx.com）All rights reserved.</div>
+<a href="#">关于我们</a>|<a href="#">媒体合作</a>|<a href="#">开放平台</a>|<a href="#">广告服务</a>|<a href="http://www.damowang.com/suggest.html">联系我们</a>|<a href="#http://www.damowang.com/suggest.html">工作机会</a></div>
+<div class="Copyright">Copyright © QvBiLam 2015. All rights reserved.</div>
 <div class="align clearfix">
- <a href="#"><img src="images/ghs.png" />京公网安备：xxxxxxxxxxxxxxxx号</a> &nbsp;&nbsp;&nbsp;
- <a href="#"><img src="images/xy.png" />中国互联网诚信联盟</a>
+ <a href="#"><img src="__INDEX__images/ghs.png" />京公网安备：冀ICP备18004556号-1
+</a> &nbsp;&nbsp;&nbsp;
+ <a href="#"><img src="__INDEX__images/xy.png" />中国互联网诚信联盟</a>
 </div>
 </div>
 
@@ -279,7 +279,7 @@ $(".listIndex a ").bind("click",function(){
   //console.log(data);
   $.ajax({
     type:'post',
-    url:'http://angel.qvbilam.xin/index/Ajax/listAjax',    
+    url:'http://angel.qvbilam.xin/index/ajax/listajax',    
     data:"data="+data,//脑残一样！
     success:videoChange,
   })
@@ -308,7 +308,7 @@ $(".selectedShow em").bind("click",function(){
   //console.log(data);
   $.ajax({
     type:'post',
-    url:'http://angel.qvbilam.xin/index/Ajax/listAjax',    
+    url:'http://angel.qvbilam.xin/index/ajax/listajax',    
     data:"data="+data,//脑残一样！
     success:videoChange,
   })
@@ -322,7 +322,7 @@ $('.classA').click(function() {
   $('.styleA').remove();
   //alert($(this).attr('values2'));
   $.ajax({
-    url:'http://angel.qvbilam.xin/index/Ajax/styleChange',
+    url:'http://angel.qvbilam.xin/index/ajax/stylechange',
     data:'cid='+$(this).attr('values2'),
     type:'post',
     //建议别读。读了特么的烦死了
@@ -355,7 +355,7 @@ $('.classA').click(function() {
       //console.log(data);
       $.ajax({
         type:'post',
-        url:'http://angel.qvbilam.xin/index/Ajax/listAjax',    
+        url:'http://angel.qvbilam.xin/index/ajax/listajax',    
         data:"data="+data,//脑残一样！
         success:videoChange,
       })
@@ -380,7 +380,7 @@ $(".eliminateCriteria").bind("click",function(){
   //console.log(data);
   $.ajax({
     type:'post',
-    url:'http://angel.qvbilam.xin/index/Ajax/listAjax',    
+    url:'http://angel.qvbilam.xin/index/ajax/listajax',    
     data:"data="+data,//脑残一样！
     success:videoChange,
   })

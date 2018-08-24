@@ -24,7 +24,7 @@
 	<!-- Modernizr JS -->
 	<script src="__INDEX__js/modernizr-2.6.2.min.js"></script>
 	<script type="text/javascript" src='__INDEX__js/jquery-1.9.1.min.js'></script>
-	<script type="text/javascript" src="http://open.51094.com/user/myscript/15ab849fb7741e.html"></script>
+	<script type="text/javascript" src="http://open.51094.com/user/myscript/15abaf0219d854.html"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -79,24 +79,82 @@
 	</body>
 </html>
 <script type="text/javascript">
+	var url;
 	$(":button").click(function() {
 		var data = $("#denglu").serialize();
+		var url = document.referrer;
+		if (url == ''){
+			url = '/';
+		}
 		$.ajax({
-			type:'post',
+			type:'get',
 			url:'index/user/dologin',
 			data:data,
 			async:true	,
-			success:success,
+			success:function (data){
+			
+				if (data == 1) {
+					alert('用户名不存在');
+				} else if (data == 2)  {
+					alert('密码不对');
+				} else if  (data == 3)  {
+					alert('用户被限制');
+				} else {
+					window.location.href = url;
+				
+				}
+			}
 		});
 	});
-	function success(data)
+
+
+	
+	
+
+
+	/*$(":button").click(function() {
+		var data = $("#denglu").serialize();
+		console.log(data);
+		var url = document.referrer;
+        if(url.indexOf(window.location.host) != -1){
+        	url = "/";
+        }
+		
+		$.get(
+			'index/user/dologin',
+			{data:data},
+			function (data) {
+				console.log(data);
+				return false;
+				if (data == 1) {
+					alert('用户名不存在');
+				} else if (data == 2)  {
+					alert('密码不对');
+				} else if  (data == 3)  {
+					alert('用户被限制');
+				} else  {
+					window.location.href = url;
+				}
+			}
+		);
+	});*/
+
+/*	function success(data)
 	{
-		if (data == 0) {
-			alert('登陆成功');
-			 window.location.href = '../index';
-		} else {
-			alert(data);
+		if (data == 1) {
+			alert('用户名不存在');
+		} else if (data == 2)  {
+			alert('密码不对');
+		} else if  (data == 3)  {
+			alert('用户被限制');
+		} else  {
+			window.location.href = url;
 		}
-	}
+		
+	}*/
+
+
+
+
 </script>
 

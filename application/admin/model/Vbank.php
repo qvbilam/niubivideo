@@ -2,6 +2,8 @@
 namespace app\admin\model;
 use think\Db;
 use think\Model;
+use Upyun\Upyun;
+use Upyun\Config;
 
 class Vbank extends Model
 {
@@ -68,6 +70,29 @@ class Vbank extends Model
 		$res = Db::name('vbank')->where(['id'=>$bid,'display'=>1])->select();
 		if($res){
 			return true; //插到了说明是显示的。可以恢复
+		}else{
+			return false;
+		}
+	}
+	public function bankpic()
+	{
+		$createConfig = new Config('damowang', 'h534511019', 'kid123456789');
+		$client = new Upyun($createConfig);
+		$id = $_POST['id'];//视频id
+		$vpic = $_FILES['pic']['tmp_name'];
+		//我的最引以为豪的随机名字
+		$string1 = 'qwert';
+		$string2 = 'poiuy';
+		$sjiname = str_shuffle($string1 . time() . $string2);
+		$file = fopen($_FILES['pic']['tmp_name'], 'r');
+		$type = $_FILES['pic']['type'];//获得类型
+		$weizhi = stripos($type, '/') + 1;//最后出现位置+1
+		$houzhui = substr($type, $weizhi);//找出后缀
+		$client->write("/background/$sjiname." . $houzhui,$file);
+		$pic = "http://damowang.test.upcdn.net/background/$sjiname.". $houzhui;
+		$res = Db::name('vbank')->where('id',$id)->update(["bankpic"=>$pic]);
+		if($res){
+			return true;
 		}else{
 			return false;
 		}

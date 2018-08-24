@@ -45,6 +45,7 @@ class AdminList extends Admin
 		$data = Db::name('user')
 				->alias('a')
 				->join('rold r','a.roldid =r.id ')
+				->where('r.deleteTime is null')
 				->select();
 		$this->assign('data',$data);
 		$this->assign('res',$res);
@@ -74,6 +75,7 @@ class AdminList extends Admin
 	//修改角色页面
 	public function adminRoleupdata ()
 	{
+		
 		//一级权限
 		$res = Db::name('auth')->where('pid=0')->select();
 		//二级权限
@@ -97,6 +99,13 @@ class AdminList extends Admin
 
 	}
 
+	//软删除角色
+	public function delrold()
+	{
+		return (Rold::destroy(input('get.id')));
+
+	}
+
 	//管理员列表
 	public function adminList ()
 	{
@@ -105,7 +114,7 @@ class AdminList extends Admin
 		$res = Db::name('user')
 			->alias('a')
 			->join('rold r','a.roldid=r.id')
-			->where('deleteTime is Null')
+			->where('a.deleteTime is Null')
 			->where('roldid is not null')
 			->select();	
 

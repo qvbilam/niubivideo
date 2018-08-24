@@ -75,28 +75,20 @@
 <aside class="Hui-aside">
 	
 	<div class="menu_dropdown bk_2">
-		<dl id="menu-product">
-			<dt class="selected"><i class="Hui-iconfont">&#xe620;</i> 资源管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd style="display: block;">
-				<ul>
-					<li class="current"><a href="tovideomanage" title="品牌管理">视频管理</a></li>
-					<li><a href="classManage" title="分类管理">分类管理</a></li>
-					<li><a href="classBig" title="分类管理">高级分类</a></li>
-					<li><a href="videoManage" title="产品管理">高级管理</a></li>
-				</ul>
-			</dd>
-		</dl>
+		{foreach $listc as $c}
 		<dl id="menu-comments">
-			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont"></i>{$c['authname']}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="../post/post" title="评论列表">评论列表</a></li>
-					<li><a href="../post/back" title="意见反馈">回复列表</a></li>
-					<li><a href="../post/danmu" title="意见反馈">弹幕列表</a></li>
-					<li><a href="../post/recycle" title="意见反馈">回收站</a></li>
+					{foreach $lista as $a}
+					{if $a['pid'] == $c['id']}					
+					<li><a href="__HTTP__admin/{$c['c']}/{$a['a']}" title="意见反馈">{$a['authname']}</a></li>
+					{/if}
+					{/foreach}
 				</ul>
 			</dd>
 		</dl>
+		{/foreach}	
 	</div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

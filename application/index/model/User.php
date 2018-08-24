@@ -10,25 +10,26 @@ use phpmailer\PHPMailer;
 use phpmailer\SMTP;
 
 
-
 class User extends Model
 {
 	//登陆判断页面
 	public function dologin($data)
 	{
+		
 		$res = Db::name('user')
 			->where('user',$data['user'])
 			->find();
 		if (!$res) {
-			return "用户名不存在";
+			return 1;
 		} else if ($res['password'] != md5($data['password'])) {
-			return "用户名密码不对";
+			return 2;
 		} else if ($res['islog'] != 0 ) {
-			return "用户被限制登录";
+			return 3;
 		}
 		session('name',$data['user']);
-		session('uid',$data['uid']);
-		return 0;		
+		session('uid',$res['uid']);
+		return 0;
+	
 	}
 
 	//手机短信验证
@@ -64,6 +65,7 @@ class User extends Model
 	//注册页
 	public function doregister($data)
 	{
+		return 22;
 		if ($data['yzm'] != session($data['phone'])) {
 			return 3;
 		}
@@ -74,7 +76,7 @@ class User extends Model
 		$res = Db::name('user')
 				->insert($array);
 		if ($res == 1) {
-			session('name',$array['user']);
+			 return session('name',$array['user']);
 			return 1;
 		} else {
 			return 0;
@@ -168,9 +170,7 @@ class User extends Model
 
 	//发送邮箱验证码
 	public function send($data)
-	{
-        
-       
+	{     
         $email =$data;
        
             $subject='大魔王影院邮箱绑定';
@@ -245,5 +245,33 @@ class User extends Model
     	return $res;
     }
 
+    //isvip
+    public function isvip()
+    {
+    	if(!empty(session('name'))){ 	
+    		$name = session('name');
+    		$uid = session('uid');
+    		$info = Db::name('vipinfo')->where('uid',$uid)->find();
+    		if ($info['vipdtime'] < $info['viptime']) {
+    			Db::name('user')->where('uid',$uid)->update(['isvip'=>0]);
+    			return false;
+    		}
+    		$res = Db::name('user')->where('user',$name)->value('isvip');
+    		return 	$res;
+    	}else{
+    		return false;
+    	}
+    	
+    }
+    //评论回复
+    public function photo()
+    {
+    	//uid,username,头像
+    	$res = Db::view("user",'uid,username,user')
+    		->view('userinfo','userpic','userinfo.uid=user.uid')
+    		->select();
+    	//dump($res);
+    	return $res;
 
+    }
 }

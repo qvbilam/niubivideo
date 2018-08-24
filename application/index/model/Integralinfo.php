@@ -26,7 +26,6 @@ class Integralinfo extends Model
 	{
 		//插入到积分明细表
 		$arr = [];
-
 		$arr['intexotime'] = time();
 		$arr['intchange'] = 5;
 		$arr['uid'] = $uid;
@@ -35,6 +34,10 @@ class Integralinfo extends Model
 		$res = $this->save($arr);
 		$integral = new Integral();
 		$num = $integral->where('uid',$uid)->value('number');
+
+		if (empty($num)) {
+			$add = Db::name('integral')->insert(["uid"=>session('uid')]);
+		}
 		$num = $num +5;
 		$str = $integral->where('uid',$uid)->update(['number'=>$num]);
 		return $str;
@@ -51,7 +54,7 @@ class Integralinfo extends Model
 			$add = $this->addvip();
 		}
 		//查询用户会员过期时间
-		$data = Db::name('vipinfo')->where('uid',sesson('uid'))->find()->toarray();
+		$data = Db::name('vipinfo')->where('uid',session('uid'))->find();
 		//续费会员
 		$arr = [];
 		if($data['vipdtime']<$data['viptime']) {
@@ -66,9 +69,10 @@ class Integralinfo extends Model
 		} else {
 			$arr['vipdtime'] += 86400*30;
 		}
-		$res = Db::name('vipinfo')->where('uid',session('uid'))->updata($arr);
+		$res = Db::name('vipinfo')->where('uid',session('uid'))->update($arr);
 		//添加积分消费信息
 		$ste = $this->updateintegral($num);
+		return $ste;
 
 	
 	}
@@ -88,9 +92,9 @@ class Integralinfo extends Model
 		$arr['bianhua'] = 'dec';
 		$str = Db::name('integralinfo')->insert($arr);
 		//修改 integral 数据
-		$num = $data[0] - $arr['integral'];
-		$int = DB::name('integral')->where('uid',session('uid'))->update(['number'=>$num]);
-		return [$str,$int];
+		$num = $data[0] - $arr['intchange'];
+		$int = DB::name('integral')->where('uid',session('uid'))->update(['number'=>$num]);		
+		return $str;
 	}
 
 	//添加到会员列表

@@ -1,9 +1,20 @@
 {volist name='vpost' id="vpostval"}
+  
   <div class="comment-list">
     <div class="comment-info">
-      <header><img src=""></header><!-- 评论头像 -->
+      {volist name='user' id='u'}
+          {eq name='$u.uid' value='$vpostval.uid'}  
+      <header><img src="{$u.userpic}"></header><!-- 评论头像 -->
+          {/eq}
+      {/volist}
       <div class="comment-right" style="border: 3px solid #5bc0de; border-radius: 28px;">
-        <h3>评论名</h3>
+        <h3>
+          {volist name='user' id='u'}
+          {eq name='$u.uid' value='$vpostval.uid'}
+          {$u.username|default="这个傻逼用户没有给自己名字"}
+          {/eq}
+          {/volist}
+        </h3>
         <div class="comment-content-header">
           <span>
             {$vpostval.posttime}
@@ -18,19 +29,25 @@
             <div class="col-md-2"><span class="reply-btn">回复</span></div>
             <input type="text" class="form-control" name="back" pid="{$vpostval.id}" style="width: 78%; float: left; display:none">
             <button class="btn btn-danger pull-right quxiao" style=" display: none; margin-right: 5% ">取消</button>
-            <button class="btn btn-info pull-right fasong" style=" display: none; margin-right: 1%">发送</button>
-            
+            <button class="btn btn-info pull-right fasong" style=" display: none; margin-right: 1%">发送</button>   
           </div>
         </div>
         {volist name="vback" id="vbackval"}
+
         {eq name='$vbackval.pid' value='$vpostval.id'}
         <div class="reply-list">
           <div class="reply">
             <div>
-              <a href="javascript:void(0)">回复名</a>:<!-- 回复名 -->
-              <a href="javascript:void(0)">@评论名</a><!-- 回复名 -->
+              <a href="javascript:void(0)">
+                {volist name='user' id='u'}
+                {eq name='$u.uid' value='$vbackval.uid'}
+                {$u.username|default="这个傻逼用户没有给自己名字"}
+                {/eq}
+                {/volist}
+              </a>:<!-- 回复名 -->
+           
               <span width='100px;' >{$vbackval.backcountent}</span></div>
-            <p><span>{$vbackval.backtime}</span><span class="reply-list-btn backBack">回复</span></p>
+            <p><span>{$vbackval.backtime}</span>
           </div>
         </div>
         {/eq}
@@ -38,4 +55,5 @@
       </div>
     </div>
   </div>
+  
   {/volist}

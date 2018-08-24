@@ -119,27 +119,30 @@ class Video extends Model
 	public function videomanageUp()
 	{
 		$num = array_keys($_FILES['psrc']['error'],0);
-		$i = $num[0];
-		if($_FILES['psrc']['error'][$i] ==0)
-		{
-			$createConfig = new Config('damowang', 'h534511019', 'kid123456789');
-			$client = new Upyun($createConfig);
-			$string1 = 'qwert';
-			$string2 = 'poiuy';
-			$sjiname = str_shuffle($string1 . time() . $string2);
-			//封面文件上传
-			$file = fopen($_FILES['psrc']['tmp_name'][$i], 'r');
-			$type = $_FILES['psrc']['type'][$i];//获得类型
-			$weizhi = stripos($type, '/') + 1;//最后出现位置+1
-			$houzhui = substr($type, $weizhi);//找出后缀		
-			$client->write("/video/images/$sjiname." . $houzhui,$file);
-			$pic = "http://damowang.test.upcdn.net/video/images/$sjiname." . $houzhui;
-			$data = [
-				'vip' => input('vip'),
-				'vpost' => input('vpost'),
-				'vpic' => $pic,
-			];
-		}else{
+		if(!empty($num)){
+			$i = $num[0];
+			if($_FILES['psrc']['error'][$i] ==0)
+			{
+				$createConfig = new Config('damowang', 'h534511019', 'kid123456789');
+				$client = new Upyun($createConfig);
+				$string1 = 'qwert';
+				$string2 = 'poiuy';
+				$sjiname = str_shuffle($string1 . time() . $string2);
+				//封面文件上传
+				@$file = fopen($_FILES['psrc']['tmp_name'][$i], 'r');
+				$type = $_FILES['psrc']['type'][$i];//获得类型
+				$weizhi = stripos($type, '/') + 1;//最后出现位置+1
+				$houzhui = substr($type, $weizhi);//找出后缀		
+				@$client->write("/video/images/$sjiname." . $houzhui,$file);
+				@$pic = "http://damowang.test.upcdn.net/video/images/$sjiname." . $houzhui;
+				$data = [
+					'vip' => input('vip'),
+					'vpost' => input('vpost'),
+					'vpic' => $pic,
+				];
+			}
+		}
+		else{
 			$data = [
 				'vip' => input('vip'),
 				'vpost' => input('vpost'),

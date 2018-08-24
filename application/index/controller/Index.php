@@ -5,10 +5,19 @@ use app\index\model\Vbank;
 use app\index\model\Video;
 use app\index\model\Vmark;
 use app\index\model\Vtovideo;
+use think\Db;
+use think\Session;
+
 class Index extends Controller
 {
     public function index()
     {
+        //用户信息
+        $uinfo = null;
+        if (!empty(session('name'))) {
+          $uinfo = Db::name('user')->where('user',session('name'))->find();
+        }
+         $this->assign('uinfo',$uinfo);
     	//板块名字
     	$vb = new Vbank();
     	$bank = $vb->Bname();
@@ -33,5 +42,11 @@ class Index extends Controller
         $mark = $ma->markSelect();
         $this->assign('mark',$mark);
         return view();
+    }
+
+    public function delname()
+    {
+        Session::clear();
+        $this->success('退出成功','/');
     }
 }

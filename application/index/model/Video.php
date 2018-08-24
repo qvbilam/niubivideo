@@ -8,7 +8,7 @@ use Upyun\Upyun;
 use Upyun\Config;
 class Video extends Model
 {
-	public function videoPlay($vid)
+	public function videoPlayer($vid)
 	{
 		return Db::name('video')->where('id',$vid)->select();
 	}
@@ -135,4 +135,10 @@ class Video extends Model
 		$arr['next'] = $next;
 		return $arr;
 	}
+	//插看改视频能否评论
+	public function post($vid)
+	{
+		return Db::name('video')->where('id',$vid)->value('vpost');
+	}
+
 }

@@ -15,9 +15,9 @@ return [
     // +----------------------------------------------------------------------
 
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     // 应用Trace
-    'app_trace'              => true,
+    'app_trace'              => false,
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
@@ -144,12 +144,15 @@ return [
         '__ADMIN__' => 'http://angel.qvbilam.xin/static/admin/',
         '__BOOTS__' => 'http://angel.qvbilam.xin/static/bootstrap/',
         '__TREES__' => 'http://angel.qvbilam.xin/static/tree/',
+        '__ERRORS__' => 'http://angel.qvbilam.xin/static/error/',
         '__DANMU__' => 'static/danmu/', 
-        '__PINGFEN__' => 'static/pingfen/', 
+        '__PINGFEN__' => 'static/pingfen/',
+        '__HTTP__' => 'http://angel.qvbilam.xin/'
     ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
+
 
     // +----------------------------------------------------------------------
     // | 异常及错误设置
@@ -242,5 +245,11 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
+    ],
+     //404
+    'http_exception_template' => [
+        // 定义404错误的重定向页面地址
+        404 => APP_PATH.'404.html',
+     
     ],
 ];

@@ -12,6 +12,13 @@ class Info extends Controller
 
 	public function _initialize()
 	{
+		if (!isset($_SERVER['HTTP_REFERER'])){
+			header('location:http://angel.qvbilam.xin');
+			die;
+		}
+		if(empty(session('name'))) {
+			$this->error('请登录',"../login");
+		}
 		$this->userInfo = new UserInfo();
 		$this->user = new User();
 	}
@@ -19,6 +26,7 @@ class Info extends Controller
 	//个人中心
 	public function info()
 	{
+		
 		$res = $this->user->geren();
 		$this->assign('res',$res);
 		return $this->fetch('information');
@@ -49,7 +57,7 @@ class Info extends Controller
 		$res=input();
 		$arr = [];
 		if (!empty($str))  {
-			$arr['userpic'] = 'uploads/' . $str;
+			$arr['userpic'] = 'http://angel.qvbilam.xin/uploads/' . $str;
 		}
 		//生日日期转换为时间戳
 		$str = $res['nian'] . '-' . $res['yue']. '-' . $res['day'];

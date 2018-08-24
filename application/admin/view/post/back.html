@@ -74,7 +74,7 @@
 <aside class="Hui-aside">
 	
 	<div class="menu_dropdown bk_2">
-		<dl id="menu-product">
+		<!-- <dl id="menu-product">
 			<dt><i class="Hui-iconfont">&#xe620;</i> 资源管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd style="display: none;">
 				<ul>
@@ -95,7 +95,21 @@
 					<li><a href="../post/recycle" title="意见反馈">回收站</a></li>
 				</ul>
 			</dd>
+		</dl> -->
+		{foreach $listc as $c}
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont"></i>{$c['authname']}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					{foreach $lista as $a}
+					{if $a['pid'] == $c['id']}					
+					<li><a href="__HTTP__admin/{$c['c']}/{$a['a']}" title="意见反馈">{$a['authname']}</a></li>
+					{/if}
+					{/foreach}
+				</ul>
+			</dd>
 		</dl>
+		{/foreach}	
 	</div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

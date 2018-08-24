@@ -6,6 +6,8 @@ use app\index\model\Video;
 use app\index\model\Vstyle;
 use app\index\model\Vpost;
 use app\index\model\Vmark;
+use app\index\model\Vshoucang;
+use think\Db;
 class Ajax extends Controller
 {
 	public function listAjax()
@@ -63,5 +65,40 @@ class Ajax extends Controller
         $mark = $ma->markSelect();
         $this->assign('mark',$mark);
 		return view();
+	}
+	public function scadd()
+	{
+		$vs = new Vshoucang();
+		$vsc = $vs->scadd();
+		if($vsc){
+			return '收藏成功';
+		}else{
+			return '收藏失败';
+		}
+	}
+	public function screm()
+	{
+		$vs = new Vshoucang();
+		$vsc =$vs->scremove();
+		if($vsc){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+	public function uservip()
+	{
+		if(empty(session('name')))
+		{
+			echo 'error1';
+		}else{
+			//查看是否是vip
+			$vip = Db::name('user')->where('user',session('name'))->value('isvip');
+			if($vip == 1){
+				echo input('id');
+			}else{
+				echo 'error2';
+			}
+		}
 	}
 }
